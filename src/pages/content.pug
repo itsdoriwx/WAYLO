@@ -1,0 +1,112 @@
+section.hero
+  .container
+    .hero__content
+      h1.hero__title Мандруй за межі звичного
+      p.hero__text Готові й власні тури Україною та світом. Обираєш, сплачуєш - і тебе вже чекає незабутній відпочинок.
+
+      form.hero__search(action="/tours.html" method="get")
+        .hero__select-wrap
+          select.hero__select(name="month" aria-label="Місяць поїздки")
+            option(value="") Будь-який місяць
+            each m, i in ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень']
+              option(value=i + 1)= m
+        button.hero__btn(type="submit") Знайти тур
+
+    .hero__frame
+      .hero__frame-photo
+
+-
+  const categories = [
+    { id: 'all', label: 'Усі' },
+    { id: 'mountains', label: 'Гори' },
+    { id: 'sea', label: 'Море' },
+    { id: 'excursion', label: 'Екскурсійні' },
+    { id: 'holiday', label: 'Святкові' }
+  ]
+
+  const tours = [
+    { title: 'Париж: Ейфелева вежа + Лувр', place: 'Франція', days: '6 днів', price: 'від 32 500 грн', cat: 'excursion' },
+    { title: 'США: Нью-Йорк + Лос-Анджелес', place: 'США, переліт включено', days: '16 днів', price: 'від 118 000 грн', cat: 'excursion' },
+    { title: 'Буковель: зимовий відпочинок', place: 'Прикарпаття', days: '5 днів', price: 'від 9 400 грн', cat: 'mountains' },
+    { title: 'Львів: новорічні казки', place: 'Львівщина', days: '4 дні', price: 'від 7 200 грн', cat: 'holiday' },
+    { title: 'Будапешт: різдвяні ярмарки', place: 'Угорщина', days: '5 днів', price: 'від 14 800 грн', cat: 'holiday' },
+    { title: 'Греція: Крит + Санторіні', place: 'Греція, переліт включено', days: '10 днів', price: 'від 41 900 грн', cat: 'sea' },
+    { title: 'Італія: Мілан + Венеція', place: 'Італія, переліт включено', days: '8 днів', price: 'від 36 700 грн', cat: 'excursion' }
+  ]
+
+mixin tourCard(t, i)
+  article.tour-card(data-category=t.cat)
+    .tour-card__img(class=`tour-card__img--${i % 3}` style=`--img: url(/images/tour-${i + 1}.jpg)`)
+    .tour-card__body
+      h3.tour-card__title= t.title
+      p.tour-card__meta #{t.place} | #{t.days}
+      .tour-card__row
+        span.tour-card__price= t.price
+        a.tour-card__btn(href="#") Деталі
+
+section.tours
+  .container
+    h2.section-title Обери свою особливу подорож
+    .chips
+      each c, i in categories
+        button.chip(type="button" data-filter=c.id class=i === 0 ? 'chip--active' : '')= c.label
+
+    .tours__grid
+      each t, i in tours
+        +tourCard(t, i)
+      a.tours__all(href="/tours.html")
+        span.tours__all-title Дивитись усі тури
+        span.tours__all-sub 50 + напрямків
+        span.tours__all-btn
+          svg(viewBox="0 0 44 26" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round")
+            line(x1="4" y1="13" x2="38" y2="13")
+            polyline(points="27,3 38,13 27,23")
+
+-
+  const features = [
+    'Готові тури з програмою по днях, задля вашого спокою.',
+    'Електронний квиток і ваучер одразу після оплати, що зберігається у вашому кабінеті навіть за відсутності зв’язку.',
+    'Враження за поїздку, що дають персональні знижки.',
+    'Доступ до WAYLO market, де ви зможете придбати товари в подорож.'
+  ]
+  const stats = [
+    { num: '12k+', label: 'задоволених мандрівників' },
+    { num: '50+', label: 'діючих напрямків' },
+    { num: '4.9', label: 'середня оцінка турів' },
+    { num: '24/7', label: 'підтримка подорожуючих' }
+  ]
+
+section.about
+  .container.about__inner
+    .about__info
+      h2.about__title Про WAYLO
+      p.about__lead WAYLO - туристична платформа, де всю поїздку від А до Я ви можете обрати й спланувати в одному місці: без черг, зайвих дзвінків чи комісій - усе задля вашого комфорту!
+      ul.about__list
+        each f in features
+          li.about__item
+            svg.about__check(viewBox="0 0 40 40" fill="none")
+              circle(cx="20" cy="20" r="20" fill="#DCE6EF")
+              polyline(points="12,21 18,27 28,14" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round")
+            span= f
+
+    .about__stats
+      each s in stats
+        .stat
+          .stat__num= s.num
+          .stat__label= s.label
+
+section.journey
+  .container
+    .journey__box
+      h2.journey__title Карта ваших вражень
+      p.journey__sub Три кроки - і ви вже в дорозі.
+      svg.journey__svg(viewBox="0 0 1400 260" fill="none" aria-hidden="true")
+        path(d="M170 60 C 330 80, 520 165, 690 168 C 880 172, 930 15, 1100 35 C 1160 43, 1195 62, 1225 80" stroke="#fff" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round")
+        circle(cx="170" cy="60" r="18" fill="#1F3556" stroke="#fff" stroke-width="3")
+        circle(cx="690" cy="168" r="18" fill="#1F3556" stroke="#fff" stroke-width="3")
+        circle(cx="1225" cy="80" r="18" fill="#1F3556" stroke="#fff" stroke-width="3")
+
+        text.journey__label(x="170" y="112" text-anchor="middle") Знайти свій тур
+        text.journey__label(x="690" y="220" text-anchor="middle") Оформити подорож
+        text.journey__label(x="1225" y="132" text-anchor="middle") Підготуйся до
+        text.journey__label(x="1225" y="160" text-anchor="middle") незабутніх емоцій

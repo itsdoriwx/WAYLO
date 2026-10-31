@@ -1,0 +1,161 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title WAYLO | Готові тури
+  body
+    - const activePage = 'tours'
+    include header.pug
+
+    main.tours-catalog-page
+      .tours-container
+        h1.tours-catalog-page__title Готові тури
+
+        .tours-filters
+          .tours-filters__group.tours-filters__group--dir
+            label.tours-filters__label Напрямок
+            input.tours-filters__input(type="text" placeholder="Куди хочете вирушити?")
+          
+          .tours-filters__group.tours-filters__group--price
+            label.tours-filters__label Вартість від
+            input.tours-filters__input(type="number" min="0" placeholder="0")
+            
+          .tours-filters__group.tours-filters__group--price
+            label.tours-filters__label Вартість до
+            input.tours-filters__input(type="number" min="0" placeholder="50000")
+
+          .tours-filters__group.tours-filters__group--currency
+            label.tours-filters__label Валюта
+            .tours-filters__select-wrap
+              select.tours-filters__select
+                option(value="UAH") UAH (грн)
+                option(value="USD") USD ($)
+                option(value="EUR") EUR (€)
+            
+          .tours-filters__group.tours-filters__group--days
+            label.tours-filters__label Тривалість (дні)
+            input.tours-filters__input(type="number" min="1" max="365" placeholder="від 1 до 365")
+
+          button.tours-filters__btn(type="button") Застосувати
+
+        .tours-catalog__grid
+          //- 1
+          article.tour-card
+            .tour-card__img.tour-card__img--0
+            .tour-card__body
+              h3.tour-card__title Франція: Романтичний Париж
+              p.tour-card__meta Франція | 6 днів
+              .tour-card__row
+                span.tour-card__price від 18 500 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 2
+          article.tour-card
+            .tour-card__img.tour-card__img--1
+            .tour-card__body
+              h3.tour-card__title США: Мегаполіс Нью-Йорк
+              p.tour-card__meta США | 8 днів
+              .tour-card__row
+                span.tour-card__price від 42 000 грн
+                a.tour-card__btn(href="/tour-usa.html") Деталі
+
+          //- 3
+          article.tour-card
+            .tour-card__img.tour-card__img--2
+            .tour-card__body
+              h3.tour-card__title Карпати: Драйвовий Буковель
+              p.tour-card__meta Україна | 4 дні
+              .tour-card__row
+                span.tour-card__price від 7 200 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 4
+          article.tour-card
+            .tour-card__img.tour-card__img--0
+            .tour-card__body
+              h3.tour-card__title Україна: Вікенд у Львові
+              p.tour-card__meta Україна | 3 дні
+              .tour-card__row
+                span.tour-card__price від 3 800 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 5
+          article.tour-card
+            .tour-card__img.tour-card__img--1
+            .tour-card__body
+              h3.tour-card__title Карпати: Говерла + Синевир
+              p.tour-card__meta Закарпаття | 5 днів
+              .tour-card__row
+                span.tour-card__price від 8 900 грн
+                a.tour-card__btn(href="/tour-details.html") Деталі
+
+          //- 6
+          article.tour-card
+            .tour-card__img.tour-card__img--2
+            .tour-card__body
+              h3.tour-card__title Угорщина: Вогні Будапешта
+              p.tour-card__meta Угорщина | 4 дні
+              .tour-card__row
+                span.tour-card__price від 9 500 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 7
+          article.tour-card
+            .tour-card__img.tour-card__img--0
+            .tour-card__body
+              h3.tour-card__title Греція: Сонячне Санторіні
+              p.tour-card__meta Греція | 7 днів
+              .tour-card__row
+                span.tour-card__price від 22 000 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 8
+          article.tour-card
+            .tour-card__img.tour-card__img--1
+            .tour-card__body
+              h3.tour-card__title Італія: Таємниці Вічного Риму
+              p.tour-card__meta Італія | 5 днів
+              .tour-card__row
+                span.tour-card__price від 16 800 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 9
+          article.tour-card
+            .tour-card__img.tour-card__img--2
+            .tour-card__body
+              h3.tour-card__title Великобританія: Туманний Лондон
+              p.tour-card__meta Великобританія | 6 днів
+              .tour-card__row
+                span.tour-card__price від 28 500 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 10
+          article.tour-card
+            .tour-card__img.tour-card__img--0
+            .tour-card__body
+              h3.tour-card__title Нідерланди: Канали Амстердама
+              p.tour-card__meta Нідерланди | 4 дні
+              .tour-card__row
+                span.tour-card__price від 14 200 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 11
+          article.tour-card
+            .tour-card__img.tour-card__img--1
+            .tour-card__body
+              h3.tour-card__title Буковина: Замки Чернівців
+              p.tour-card__meta Україна | 2 дні
+              .tour-card__row
+                span.tour-card__price від 2 900 грн
+                a.tour-card__btn(href="#") Деталі
+
+          //- 12
+          article.tour-card
+            .tour-card__img.tour-card__img--2
+            .tour-card__body
+              h3.tour-card__title Австрія: Вальси та кава Відня
+              p.tour-card__meta Австрія | 3 дні
+              .tour-card__row
+                span.tour-card__price від 11 400 грн
+                a.tour-card__btn(href="#") Деталі

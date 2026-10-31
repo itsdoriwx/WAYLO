@@ -1,0 +1,125 @@
+$text-muted: #4A6A94;
+$stat-bg: #DCE6EF;
+$hero-grad: linear-gradient(160deg, #1F3556 0%, #4A72B8 100%);
+$ph-0: linear-gradient(135deg, #5E86B8 0%, #22394F 100%);
+$ph-1: linear-gradient(180deg, #8DB0D6 0%, #C3DAF0 100%);
+$ph-2: linear-gradient(135deg, #12364A 0%, #2F85AE 100%);
+
+.container--content { max-width: 1580px; margin: 0 auto; padding: 0 20px; }
+[hidden] { display: none !important; }
+
+.section-title {
+  font-family: $font-accent; font-weight: 700; font-size: 80px; line-height: 1.1; color: $text-nav;
+}
+
+.hero {
+  padding: 120px 0 160px;
+  &__inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  &__content { max-width: 1100px; }
+  &__title {
+    font-family: $font-accent; font-weight: 700; font-size: 100px; line-height: 1.1; color: $text-nav;
+    max-width: 800px;
+  }
+  &__text {
+    margin-top: 33px; font-family: $font-accent; font-weight: 400; font-size: 40px; line-height: 1.25; color: $text-nav;
+  }
+  &__search {
+    margin-top: 40px; display: inline-flex; align-items: center; gap: 20px;
+    padding: 12px; background: $white; border-radius: 50px;
+  }
+  &__select-wrap { position: relative; }
+  &__select {
+    appearance: none; border: 0; outline: none; background: transparent; cursor: pointer;
+    font-family: $font-main; font-size: 30px; color: $text-nav; padding: 0 70px 0 30px; height: 76px; min-width: 420px;
+  }
+  &__select-wrap::after {
+    content: ''; position: absolute; right: 30px; top: 50%; width: 12px; height: 12px;
+    border-right: 3px solid $text-nav; border-bottom: 3px solid $text-nav;
+    transform: translateY(-70%) rotate(45deg); pointer-events: none;
+  }
+  &__btn {
+    border: 0; cursor: pointer; height: 76px; padding: 0 56px; border-radius: 50px;
+    background: $btn-blue; color: $white; font-family: $font-accent; font-size: 30px; font-weight: 700;
+    transition: background-color .2s;
+    &:hover { background: lighten($btn-blue, 8%); }
+  }
+  &__frame {
+    flex-shrink: 0; width: 600px; height: 700px; padding: 26px; border-radius: 40px;
+    background: $hero-grad; transform: rotate(8deg); box-shadow: 0 30px 60px rgba(13, 32, 56, .18);
+  }
+  &__frame-photo {
+    width: 100%; height: 100%; border-radius: 34px; background: $white center / cover no-repeat url('/images/hero-main.jpg');
+  }
+}
+
+.tours {
+  padding-bottom: 140px;
+  &__grid { margin-top: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  &__all {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    background: $stat-bg; border-radius: 36px; text-decoration: none; color: $text-nav; min-height: 560px;
+    transition: transform .2s; &:hover { transform: translateY(-4px); }
+  }
+  &__all-title { font-family: $font-accent; font-weight: 700; font-size: 38px; }
+  &__all-sub { font-size: 26px; margin-top: 4px; }
+  &__all-btn {
+    margin-top: 24px; display: flex; align-items: center; justify-content: center;
+    width: 200px; height: 64px; border-radius: 40px; background: $btn-blue;
+  }
+}
+
+.chips { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+.chip {
+  border: 0; cursor: pointer; height: 64px; padding: 0 32px; border-radius: 40px;
+  background: $stat-bg; color: $text-nav; font-family: $font-accent; font-size: 30px;
+  &--active { background: $btn-blue; color: $white; font-weight: 700; }
+}
+
+.tour-card {
+  background: $white; border-radius: 36px; overflow: hidden; display: flex; flex-direction: column;
+  &__img {
+    height: 320px; background-size: cover; background-position: center;
+    &--0 { background-color: #5E86B8; background-image: $ph-0; }
+    &--1 { background-color: #8DB0D6; background-image: $ph-1; }
+    &--2 { background-color: #12364A; background-image: $ph-2; }
+  }
+  &__body { padding: 28px 32px 32px; }
+  &__title { font-family: $font-accent; font-weight: 700; font-size: 38px; line-height: 1.2; min-height: 92px; }
+  &__meta { margin-top: 10px; font-size: 26px; }
+  &__row { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; }
+  &__price { font-family: $font-accent; font-weight: 700; font-size: 28px; }
+  &__btn {
+    display: inline-flex; align-items: center; justify-content: center; width: 180px; height: 58px;
+    border-radius: 40px; background: $btn-blue; color: $white; text-decoration: none; font-size: 26px;
+    transition: background-color .2s; &:hover { background: lighten($btn-blue, 8%); }
+  }
+}
+
+.about {
+  padding-bottom: 100px;
+  &__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  &__title { font-family: $font-accent; font-weight: 700; font-size: 90px; line-height: 1.1; }
+  &__lead { margin-top: 30px; font-size: 30px; line-height: 1.35; color: $text-muted; }
+  &__list { margin-top: 36px; list-style: none; display: flex; flex-direction: column; gap: 22px; }
+  &__item { display: flex; gap: 24px; align-items: flex-start; font-size: 26px; line-height: 1.35; color: $text-muted; }
+  &__check { flex-shrink: 0; }
+  &__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 30px; }
+}
+.stat {
+  background: $stat-bg; border-radius: 40px; padding: 40px 40px 36px;
+  &__num { font-family: $font-accent; font-weight: 700; font-size: 90px; line-height: 1; }
+  &__label { margin-top: 16px; font-size: 24px; color: $text-muted; }
+}
+
+.journey {
+  padding-bottom: 60px;
+  &__box { position: relative; background: $btn-blue; color: $white; border-radius: 40px; padding: 40px 40px 30px; text-align: center; overflow: hidden; }
+  &__title { font-family: $font-accent; font-weight: 700; font-size: 64px; }
+  &__sub { margin-top: 6px; font-size: 28px; }
+  &__svg { width: 100%; height: auto; display: block; margin-top: 10px; }
+  &__label { position: absolute; font-size: 24px; line-height: 1.2; text-align: center;
+    &--1 { left: 5%; top: 62%; }
+    &--2 { left: 43%; bottom: 8%; }
+    &--3 { right: 4%; top: 68%; }
+  }
+}

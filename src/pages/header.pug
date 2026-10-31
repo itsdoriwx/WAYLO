@@ -1,12 +1,12 @@
 header.header
   .container
     .header__inner
-      a.header__logo(href="#") WAYLO
+      a.header__logo(href="/index.html") WAYLO
       
       nav.header__nav
-        a.header__link.header__link--active(href="#") Головна
-        a.header__link(href="#") Тури
-        a.header__link(href="#") Маркет
+        a.header__link(class={ 'header__link--active': activePage === 'home' } href="/index.html") Головна
+        a.header__link(class={ 'header__link--active': activePage === 'tours' } href="/tours.html") Тури
+        a.header__link(class={ 'header__link--active': activePage === 'market' } href="/market.html") Маркет
         
       .header__search
         input.header__search-input(type="text" placeholder="Введіть запит...")
@@ -14,4 +14,6 @@ header.header
           circle(cx="11" cy="11" r="8")
           line(x1="21" y1="21" x2="16.65" y2="16.65")
         
-      a.header__btn(href="#") Увійти
+      a.header__btn(href="/login.html") Увійти
+
+include chat-widget.pug

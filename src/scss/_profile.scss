@@ -1,0 +1,368 @@
+.header__profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px 0 6px;
+  border-radius: 19px;
+  border: 1.5px solid #1F3556;
+  background: transparent;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: rgba(31, 53, 86, 0.05);
+    transform: translateY(-1px);
+  }
+}
+
+.header__profile-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #375E99 0%, #121F33 100%);
+}
+
+.header__profile-name {
+  font-family: $font-accent;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0D2038;
+  line-height: 1;
+}
+
+.profile-page {
+  background-color: $bg-color;
+  min-height: 100vh;
+}
+
+main.profile-main {
+  max-width: 100% !important;
+  margin-top: 20px !important; 
+  margin-bottom: 40px !important;
+  width: 100% !important;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 1280px !important;
+  padding: 0 40px !important;
+  margin: 0 auto !important;
+}
+
+.profile-layout {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.profile-sidebar {
+  width: 350px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
+  zoom: 1.02; 
+  transform-origin: top left;
+}
+
+.profile-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0px;
+
+  &__avatar {
+    width: 72px;  
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #375E99 0%, #121F33 100%);
+    margin-bottom: 6px;
+  }
+
+  &__name {
+    font-family: $font-accent;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    color: #0D2038;
+  }
+
+  &__meta {
+    font-family: $font-accent;
+    font-weight: 400;
+    font-size: 13px;
+    color: #5B6E85;
+    margin-top: 2px;
+  }
+}
+
+.balance-card {
+  width: 100%;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #1F3556 0%, #4474BC 100%);
+  padding: 16px 20px;
+  color: #DCE6EF;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &__title {
+    font-family: $font-accent;
+    font-weight: 400;
+    font-size: 14px;
+    color: #DCE6EF;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__star {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  &__value {
+    font-family: 'Inria Serif', serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1;
+    background: linear-gradient(180deg, #DCE6EF 0%, #8AAFD5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__note {
+    font-family: $font-accent;
+    font-weight: 400;
+    font-size: 12px;
+    color: #DCE6EF;
+    text-align: right;
+  }
+}
+
+.history-card {
+  width: 100%;
+  border-radius: 22px;
+  background-color: $white;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(13, 32, 56, 0.04);
+
+  &__title {
+    font-family: $font-accent;
+    font-weight: 700;
+    font-size: 14px;
+    color: #1F3556;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $font-accent;
+    font-weight: 400;
+    font-size: 12px;
+    color: #1F3556;
+  }
+
+  &__points {
+    font-family: $font-accent;
+    font-weight: 700;
+    font-size: 12px;
+    color: #1F3556;
+  }
+}
+
+.profile-logout-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid #1F3556;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: $font-accent;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1F3556;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: rgba(31, 53, 86, 0.08);
+    transform: translateY(-1px);
+  }
+}
+
+// права частинка - квитки
+.profile-tickets {
+  flex: 1;
+  min-width: 0;
+
+  &__header {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-family: $font-accent;
+    font-weight: 700;
+    font-size: 38px;
+    color: #1F3556;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    font-family: $font-accent;
+    font-weight: 400;
+    font-size: 15px;
+    color: #5B6E85;
+    margin-top: 2px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+.ticket-card {
+  position: relative;
+  width: 100%;
+  height: 200px; 
+  border-radius: 26px;
+  background: linear-gradient(135deg, #1F3556 0%, #4474BC 100%);
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__notch {
+    position: absolute;
+    right: 200px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #F4F7FA !important;
+    z-index: 5;
+
+    &--top { top: -15px; }
+    &--bottom { bottom: -15px; }
+  }
+
+  &__dash-line {
+    position: absolute;
+    right: 214px;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-right: 2px dashed #F4F7FA;
+    opacity: 0.65;
+    z-index: 2;
+  }
+
+  &__star {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    &--1 { top: 18px; right: 240px; transform: rotate(15deg); }
+    &--2 { bottom: 14px; right: 24px; transform: rotate(-25deg); }
+    &--3 { top: 96px; left: 190px; transform: rotate(35deg); }
+  }
+
+  &__main {
+    flex: 1;
+    min-width: 0;
+    padding-right: 28px;
+    z-index: 2;
+  }
+
+  &__tag {
+    font-family: $font-accent;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 2px;
+  }
+
+  &__tour-title {
+    font-family: $font-accent;
+    font-weight: 700;
+    font-size: 26px;
+    color: $white;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 8px 24px;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  &__label {
+    font-family: $font-accent;
+    font-size: 12px;
+    color: #7E90A6;
+  }
+
+  &__val {
+    font-family: $font-accent;
+    font-size: 14px;
+    color: $white;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__qr-side {
+    width: 150px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    z-index: 3;
+  }
+
+  &__qr-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &__code {
+    font-family: $font-accent;
+    font-size: 14px;
+    color: $white;
+    font-weight: 500;
+  }
+}

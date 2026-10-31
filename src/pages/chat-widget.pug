@@ -1,0 +1,329 @@
+.mascot-widget
+
+  //- вікно чату
+  section#chatPanel.chat(aria-label="Чат з помічником WAYLO" aria-hidden="true")
+    header.chat__header
+      svg.chat__avatar(viewBox="0 0 40 40" aria-hidden="true")
+        defs
+          linearGradient#chatAvaGrad(x1="0" y1="0" x2="0" y2="1")
+            stop(offset="0" stop-color="#DCE6EF")
+            stop(offset="1" stop-color="#8AAFD5")
+        circle(cx="20" cy="20" r="20" fill="url(#chatAvaGrad)")
+        ellipse(cx="14.5" cy="19" rx="2.6" ry="3.3" fill="#0D2038")
+        ellipse(cx="25.5" cy="19" rx="2.6" ry="3.3" fill="#0D2038")
+        circle(cx="15.4" cy="17.6" r="0.9" fill="#fff")
+        circle(cx="26.4" cy="17.6" r="0.9" fill="#fff")
+        path(d="M16.5 26 Q20 29.5 23.5 26" stroke="#0D2038" stroke-width="1.8" stroke-linecap="round" fill="none")
+      .chat__title-wrap
+        h3.chat__title Вейлі
+        p.chat__status помічник WAYLO
+      button#chatClose.chat__close(type="button" aria-label="Закрити чат") ×
+
+    #chatMessages.chat__messages(aria-live="polite")
+
+    #chatChips.chat__chips
+      button.chat__chip(type="button") Підібрати тур
+      button.chat__chip(type="button") Як працюють бали?
+      button.chat__chip(type="button") Способи оплати
+
+    form#chatForm.chat__form(autocomplete="off")
+      input#chatInput.chat__input(type="text" placeholder="Напишіть повідомлення…" maxlength="500" aria-label="Ваше повідомлення")
+      button.chat__send(type="submit" aria-label="Надіслати")
+        svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round")
+          line(x1="12" y1="19" x2="12" y2="5")
+          polyline(points="5 12 12 5 19 12")
+
+  //- монстрик-талісман
+  .mascot
+    p#mascotHint.mascot__hint Привіт! Допомогти обрати тур? ✨
+    button#mascotBtn.mascot__btn(type="button" aria-label="Відкрити чат з помічником" aria-controls="chatPanel" aria-expanded="false")
+      svg.mascot__svg(viewBox="0 0 120 134" aria-hidden="true")
+        defs
+          linearGradient#mBody(x1="0" y1="0" x2="0" y2="1")
+            stop(offset="0" stop-color="#B7D1F0")
+            stop(offset="1" stop-color="#4474BC")
+          linearGradient#mBelly(x1="0" y1="0" x2="0" y2="1")
+            stop(offset="0" stop-color="#FFFFFF" stop-opacity="0.75")
+            stop(offset="1" stop-color="#DCE6EF" stop-opacity="0.35")
+
+        ellipse.mascot__shadow(cx="60" cy="128" rx="30" ry="4.5" fill="#0D2038" opacity="0.16")
+
+        g.mascot__body
+          //- антенка із зіркою
+          line(x1="60" y1="36" x2="60" y2="20" stroke="#1F3556" stroke-width="3" stroke-linecap="round")
+          g.mascot__star
+            path(transform="translate(48 0) scale(0.75)" d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFD76A")
+
+          //- вушка
+          circle(cx="24" cy="50" r="11" fill="#4474BC")
+          circle(cx="96" cy="50" r="11" fill="#4474BC")
+          circle(cx="24" cy="50" r="6" fill="#8AAFD5")
+          circle(cx="96" cy="50" r="6" fill="#8AAFD5")
+
+          //- ніжки
+          ellipse(cx="43" cy="119" rx="13" ry="7.5" fill="#1F3556")
+          ellipse(cx="77" cy="119" rx="13" ry="7.5" fill="#1F3556")
+
+          //- ручки
+          ellipse(cx="14" cy="94" rx="8" ry="13" fill="#4474BC")
+          g.mascot__arm-raise
+            g.mascot__arm-wave
+              ellipse(cx="106" cy="94" rx="8" ry="13" fill="#4474BC")
+
+          //- тіло
+          ellipse(cx="60" cy="80" rx="46" ry="42" fill="url(#mBody)")
+          ellipse(cx="60" cy="92" rx="28" ry="24" fill="url(#mBelly)")
+
+          //- обличчя
+          g.mascot__eyes
+            circle.mascot__eye(cx="44" cy="72" r="9" fill="#0D2038")
+            circle.mascot__eye(cx="76" cy="72" r="9" fill="#0D2038")
+            circle(cx="47" cy="68.5" r="3.2" fill="#fff")
+            circle(cx="79" cy="68.5" r="3.2" fill="#fff")
+            circle(cx="41.5" cy="76.5" r="1.5" fill="#fff")
+            circle(cx="73.5" cy="76.5" r="1.5" fill="#fff")
+
+          ellipse(cx="31" cy="88" rx="7.5" ry="4.5" fill="#FF9EB8" opacity="0.6")
+          ellipse(cx="89" cy="88" rx="7.5" ry="4.5" fill="#FF9EB8" opacity="0.6")
+
+          path.mascot__mouth.mascot__mouth--smile(d="M53 87 Q60 94 67 87" stroke="#0D2038" stroke-width="2.6" stroke-linecap="round" fill="none")
+          path.mascot__mouth.mascot__mouth--open(d="M52.5 86 Q60 102 67.5 86 Z" fill="#0D2038")
+          path.mascot__mouth.mascot__mouth--open(d="M56 95 Q60 99 64 95 Q60 92.5 56 95 Z" fill="#FF8FA8")
+
+  script.
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var btn = $('mascotBtn'), hint = $('mascotHint'), panel = $('chatPanel');
+      var closeBtn = $('chatClose'), list = $('chatMessages'), chips = $('chatChips');
+      var form = $('chatForm'), input = $('chatInput');
+      var svg = btn.querySelector('.mascot__svg');
+
+      // модель та URL для Ollama API
+      var OLLAMA_URL = '/ollama/api/chat';  
+      var MODEL = 'gemma3:1b';               
+
+      var SYSTEM_PROMPT =
+        'You are Vayli, an AI assistant for WAYLO travel website.\n' +
+        'ALWAYS reply in Ukrainian. Never reply in English. Keep every reply to 1-3 short, helpful, friendly sentences.\n\n' +
+        'RULES:\n' +
+        '1) Use ONLY the facts below. Never invent tours, countries, dates, or price ranges.\n' +
+        '2) Plain text only: no asterisks, no markdown, no lists, no headings.\n' +
+        '3) Ask at most ONE short follow-up question.\n' +
+        '4) Write tour names and prices exactly as given in the facts (for example «Франція: Романтичний Париж», від 18 500 грн).\n' +
+        '5) If the answer is not in the facts, say in Ukrainian: «Цього я не знаю, подивіться на сторінці туру або напишіть у підтримку».\n\n' +
+        'FACTS:\n' +
+        'Tours available on WAYLO (12 tours total):\n' +
+        '1) «Франція: Романтичний Париж» — Франція, 6 днів, від 18 500 грн.\n' +
+        '2) «США: Мегаполіс Нью-Йорк» — США, 8 днів, від 42 000 грн.\n' +
+        '3) «Карпати: Драйвовий Буковель» — Україна, 4 дні, від 7 200 грн.\n' +
+        '4) «Україна: Вікенд у Львові» — Україна, 3 дні, від 3 800 грн.\n' +
+        '5) «Карпати: Говерла + Синевир» — Закарпаття, 5 днів, від 8 900 грн.\n' +
+        '6) «Угорщина: Вогні Будапешта» — Угорщина, 4 дні, від 9 500 грн.\n' +
+        '7) «Греція: Сонячне Санторіні» — Греція, 7 днів, від 22 000 грн.\n' +
+        '8) «Італія: Таємниці Вічного Риму» — Італія, 5 днів, від 16 800 грн.\n' +
+        '9) «Великобританія: Туманний Лондон» — Великобританія, 6 днів, від 28 500 грн.\n' +
+        '10) «Нідерланди: Канали Амстердама» — Нідерланди, 4 дні, від 14 200 грн.\n' +
+        '11) «Буковина: Замки Чернівців» — Україна, 2 дні, від 2 900 грн.\n' +
+        '12) «Австрія: Вальси та кава Відня» — Австрія, 3 дні, від 11 400 грн.\n\n' +
+        'Payment methods:\n' +
+        'Card, Apple Pay, Google Pay.\n' +
+        'Options: Full payment (100%) or booking with a 30% prepayment.\n' +
+        'Important: Experience points («бали вражень») CANNOT be used when choosing the 30% prepayment option. Up to 3 travelers per order.\n\n' +
+        'Experience Points («бали вражень»):\n' +
+        '1 point = 1 UAH. Points can cover up to 50% of the tour price (only with full payment).\n' +
+        'Points are earned by writing reviews for completed tours, completing in-tour challenges, or as general rewards for traveling with WAYLO.\n\n' +
+        'Tickets & Documents:\n' +
+        'Tickets appear in the personal account immediately after purchase.\n' +
+        'They are also sent by email and are available for download.\n\n' +
+        'Tour Itinerary Changes:\n' +
+        'The tour program may change due to weather or force majeure. The tour guide will notify travelers in advance via the platform and send an email update.\n\n' +
+        'Support & Working Hours:\n' +
+        'Managers are available for calls and messages daily from 8:00 to 20:00.\n' +
+        'Phone number: +38 099 999 99 99. Additional contacts are available in the website footer.\n' +
+        'Users can also ask Vayli (the assistant) for help anytime 24/7.';
+
+      // приклади відповідей, щоб модель не вигадувала факти
+      var BASE = [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: 'Які є тури до Франції чи Італії?' },
+        { role: 'assistant', content: 'У нас є тур «Франція: Романтичний Париж» на 6 днів від 18 500 грн та «Італія: Таємниці Вічного Риму» на 5 днів від 16 800 грн. Який напрямок вам цікавіший?' },
+        { role: 'user', content: 'Чи можна використати бали при бронюванні 30%?' },
+        { role: 'assistant', content: 'Ні, бали вражень можна використати тільки при повній оплаті 100% вартості туру. Бажаєте дізнатися більше про умови накопичення балів?' },
+        { role: 'user', content: 'Як зв’язатися з менеджером?' },
+        { role: 'assistant', content: 'Наші менеджери на зв’язку щодня з 8:00 до 20:00 за телефоном +38 099 999 99 99 або у контактах у футері. Також ви завжди можете розраховувати на мою допомогу 24/7!' }
+      ];
+
+      var history = []; // лише реальна розмова ({role, content})
+
+      // прибрати markdown, який модель іноді може додавати
+      function clean(t) {
+        return t
+          .replace(/\*\*|__/g, '')
+          .replace(/^\s*[\*\-]\s+/gm, '• ')
+          .replace(/\*/g, '')
+          .replace(/^#+\s*/gm, '');
+      }
+      var greeted = false, busy = false, typingEl = null;
+
+      function scrollDown() { list.scrollTop = list.scrollHeight; }
+
+      function addMsg(role, text) {
+        var el = document.createElement('div');
+        el.className = 'chat__msg chat__msg--' + (role === 'user' ? 'user' : 'bot');
+        el.textContent = text;
+        list.appendChild(el);
+        scrollDown();
+        return el;
+      }
+
+      function showTyping() {
+        typingEl = document.createElement('div');
+        typingEl.className = 'chat__msg chat__msg--bot chat__typing';
+        typingEl.innerHTML = '<span></span><span></span><span></span>';
+        list.appendChild(typingEl);
+        scrollDown();
+      }
+      function hideTyping() {
+        if (typingEl) { typingEl.remove(); typingEl = null; }
+      }
+
+      // заглушка відповідей, якщо Ollama недоступна
+      function getReply(msgs) {
+        return new Promise(function (resolve) {
+          var q = msgs[msgs.length - 1].content.toLowerCase();
+          var a;
+          if (/(бал|враженн)/.test(q)) {
+            a = '1 бал = 1 грн. Балами можна покрити до 50% вартості туру, але лише при повній оплаті (100%) 💙';
+          } else if (/(оплат|карт|google|apple|бронюв|предоплат)/.test(q)) {
+            a = 'Можна сплатити повністю (100%) або зробити передоплату 30%. Приймаємо картки, Apple Pay та Google Pay.';
+          } else if (/(тур|подорож|поїздк|париж|рим|карпат|буковель|львів)/.test(q)) {
+            a = 'У нас є 12 чудових напрямків — від романтичного Парижа та Будапешта до вікенду у Львові або Буковелі. Про який напрямок розказати детальніше?';
+          } else if (/(квит|пошт|особист)/.test(q)) {
+            a = 'Квитки з’являються в особистому кабінеті одразу після покупки, а також надсилаються на вашу пошту для завантаження.';
+          } else if (/(привіт|вітаю|добр)/.test(q)) {
+            a = 'Привіт! Я Вейлі 👋 Чим можу допомогти у виборі вашої ідеальної подорожі?';
+          } else {
+            a = 'Я з радістю підкажу про наші тури, бали вражень, квитки чи умови оплати. Запитуйте!';
+          }
+          setTimeout(function () { resolve(a); }, 900 + Math.random() * 600);
+        });
+      }
+
+      // запит до ollama зі стрімінгом
+      function askOllama(msgs, onToken) {
+        var payload = BASE.concat(msgs.slice(-10));
+
+        return fetch(OLLAMA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: MODEL,
+            messages: payload,
+            stream: true,
+            options: { temperature: 0.2, num_predict: 200 }
+          })
+        }).then(function (res) {
+          if (!res.ok || !res.body) throw new Error('HTTP ' + res.status);
+          var reader = res.body.getReader();
+          var decoder = new TextDecoder();
+          var buf = '';
+
+          function pump() {
+            return reader.read().then(function (r) {
+              if (r.done) return;
+              buf += decoder.decode(r.value, { stream: true });
+              var lines = buf.split('\n');
+              buf = lines.pop();
+              lines.forEach(function (line) {
+                if (!line.trim()) return;
+                try {
+                  var j = JSON.parse(line);
+                  if (j.message && j.message.content) onToken(j.message.content);
+                } catch (e) { /* неповний рядок — пропускаємо */ }
+              });
+              return pump();
+            });
+          }
+          return pump();
+        });
+      }
+
+      function send(text) {
+        text = (text || '').trim();
+        if (!text || busy) return;
+        busy = true;
+        chips.style.display = 'none';
+        addMsg('user', text);
+        history.push({ role: 'user', content: text });
+        input.value = '';
+        showTyping();
+
+        var botEl = null, full = '';
+
+        askOllama(history, function (token) {
+          if (!botEl) { hideTyping(); botEl = addMsg('bot', ''); }
+          full += token;
+          botEl.textContent = clean(full);
+          scrollDown();
+        })
+          .catch(function (err) {
+            console.warn('Ollama недоступна, використовую заглушку:', err);
+            if (full) return;
+            return getReply(history).then(function (a) { full = a; });
+          })
+          .then(function () {
+            hideTyping();
+            full = clean(full).trim();
+            if (!full) full = 'Не вдалося отримати відповідь. Спробуйте ще раз.';
+            if (!botEl) botEl = addMsg('bot', full);
+            else botEl.textContent = full;
+            history.push({ role: 'assistant', content: full });
+            busy = false;
+            input.focus();
+          });
+      }
+
+      // відкритта / закриття чату
+      function openChat() {
+        panel.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+        hint.classList.add('is-hidden');
+        if (!greeted) {
+          greeted = true;
+          addMsg('bot', 'Привіт! Я Вейлі, помічник WAYLO 👋 Допоможу обрати тур з 12 напрямків, розповім про бали та оплату.');
+        }
+        setTimeout(function () { input.focus(); }, 250);
+      }
+      function closeChat() {
+        panel.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+
+      btn.addEventListener('click', function () {
+        panel.classList.contains('is-open') ? closeChat() : openChat();
+      });
+      closeBtn.addEventListener('click', closeChat);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && panel.classList.contains('is-open')) closeChat();
+      });
+
+      form.addEventListener('submit', function (e) { e.preventDefault(); send(input.value); });
+      chips.addEventListener('click', function (e) {
+        if (e.target.classList.contains('chat__chip')) send(e.target.textContent);
+      });
+
+      // очі монстрика слідкують за курсором
+      document.addEventListener('mousemove', function (e) {
+        var r = svg.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width / 2);
+        var dy = e.clientY - (r.top + r.height * 0.55);
+        var d = Math.sqrt(dx * dx + dy * dy) || 1;
+        var k = Math.min(d / 140, 1) * 3.4;
+        svg.style.setProperty('--ex', (dx / d * k).toFixed(2) + 'px');
+        svg.style.setProperty('--ey', (dy / d * k).toFixed(2) + 'px');
+      });
+    })();

@@ -1,0 +1,146 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Особистий кабінет | WAYLO
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet")
+  body.profile-page
+     
+    header.header
+      .container
+        .header__inner
+          a.header__logo(href="/index.html") WAYLO
+          
+          nav.header__nav
+            a.header__link(href="/index.html") Головна
+            a.header__link(href="/tours.html") Тури
+            a.header__link(href="#") Маркет
+            
+          .header__search
+            input.header__search-input(type="text" placeholder="Введіть запит...")
+            svg.header__search-icon(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D2038" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
+              circle(cx="11" cy="11" r="8")
+              line(x1="21" y1="21" x2="16.65" y2="16.65")
+            
+          a.header__profile-btn(href="/profile.html")
+            .header__profile-avatar
+            span.header__profile-name itsdariawx
+
+    main.profile-main
+      .profile-container
+        .profile-layout
+          //- ліва частинка: профіль, баланс, історія
+          aside.profile-sidebar
+            .profile-user
+              .profile-user__avatar
+              h1.profile-user__name Дар’я Цілуйко
+              p.profile-user__meta @itsdariawx  |  itsdariawx@gmail.com
+
+            //- картка балансу бонусів
+            .balance-card
+              p.balance-card__title Баланс вражень
+              .balance-card__row
+                svg.balance-card__star(width="64" height="64" viewBox="0 0 64 64" fill="none")
+                  defs
+                    linearGradient#starGrad(x1="0%" y1="0%" x2="0%" y2="100%")
+                      stop(offset="0%" stop-color="#DCE6EF")
+                      stop(offset="100%" stop-color="#8AAFD5")
+                  path(d="M32 0C32 17.6731 17.6731 32 0 32C17.6731 32 32 46.3269 32 64C32 46.3269 46.3269 32 64 32C46.3269 32 32 17.6731 32 0Z" fill="url(#starGrad)")
+                span.balance-card__value 448
+              p.balance-card__note * 1 бал = 1 грн
+
+            //- історія нарахування балів
+            .history-card
+              h3.history-card__title Історія нарахування балів
+              ul.history-card__list
+                li.history-card__item
+                  span Реєстрація
+                  strong.history-card__points +100
+                li.history-card__item
+                  span Відгук до подорожі “Таємниці Риму”
+                  strong.history-card__points +50
+                li.history-card__item
+                  span Челендж “Автентична страва”
+                  strong.history-card__points +200
+
+            a.profile-logout-btn(href="/index.html") Вийти
+
+          //- права частинка: квитки
+          section.profile-tickets
+            .profile-tickets__header
+              h2.profile-tickets__title Мої квитки
+              p.profile-tickets__subtitle Клікніть на квиток для перегляду деталей
+
+            .profile-tickets__list
+              //- квиток 1
+              article.ticket-card
+                .ticket-card__notch.ticket-card__notch--top
+                .ticket-card__notch.ticket-card__notch--bottom
+                .ticket-card__dash-line
+
+                svg.ticket-card__star.ticket-card__star--1(width="22" height="22" viewBox="0 0 32 32")
+                  path(d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF" opacity="0.6")
+                svg.ticket-card__star.ticket-card__star--2(width="18" height="18" viewBox="0 0 32 32")
+                  path(d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF" opacity="0.5")
+                svg.ticket-card__star.ticket-card__star--3(width="18" height="18" viewBox="0 0 32 32")
+                  path(d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF" opacity="0.6")
+
+                .ticket-card__main
+                  p.ticket-card__tag Електронний квиток 1  |  WAYLO
+                  h3.ticket-card__tour-title Карпати: Тиса та Синевир
+
+                  .ticket-card__grid
+                    .ticket-card__col
+                      span.ticket-card__label Дата виїзду
+                      span.ticket-card__val 14 листопада
+                    .ticket-card__col
+                      span.ticket-card__label К-сть мандрівників
+                      span.ticket-card__val 1
+                    .ticket-card__col
+                      span.ticket-card__label Статус замовлення
+                      span.ticket-card__val Сплачено
+                    .ticket-card__col
+                      span.ticket-card__label Код квитку
+                      span.ticket-card__val WL-4IEG21
+
+                .ticket-card__qr-side
+                  .ticket-card__qr-box
+                  span.ticket-card__code WL-4IEG21
+
+              //- квиток 2
+              article.ticket-card
+                .ticket-card__notch.ticket-card__notch--top
+                .ticket-card__notch.ticket-card__notch--bottom
+                .ticket-card__dash-line
+
+                svg.ticket-card__star.ticket-card__star--1(width="22" height="22" viewBox="0 0 32 32")
+                  path(d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF" opacity="0.6")
+                svg.ticket-card__star.ticket-card__star--2(width="18" height="18" viewBox="0 0 32 32")
+                  path(d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF" opacity="0.5")
+                svg.ticket-card__star.ticket-card__star--3(width="18" height="18" viewBox="0 0 32 32")
+                  path(d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF" opacity="0.6")
+
+                .ticket-card__main
+                  p.ticket-card__tag Електронний квиток 2  |  WAYLO
+                  h3.ticket-card__tour-title США: Новорічний Нью-Йорк
+
+                  .ticket-card__grid
+                    .ticket-card__col
+                      span.ticket-card__label Дата виїзду
+                      span.ticket-card__val 23 грудня
+                    .ticket-card__col
+                      span.ticket-card__label К-сть мандрівників
+                      span.ticket-card__val 1
+                    .ticket-card__col
+                      span.ticket-card__label Статус замовлення
+                      span.ticket-card__val Сплачено
+                    .ticket-card__col
+                      span.ticket-card__label Код квитку
+                      span.ticket-card__val WL-SX23E1
+
+                .ticket-card__qr-side
+                  .ticket-card__qr-box
+                  span.ticket-card__code WL-SX23E1

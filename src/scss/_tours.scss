@@ -1,0 +1,238 @@
+$catalog-title-color: #0D2038;
+$catalog-btn-bg: #1F3556;
+
+$ph-catalog-0: linear-gradient(135deg, #5980AB 0%, #243A45 100%);
+$ph-catalog-1: linear-gradient(180deg, #8AAFD5 0%, #BDD8F0 100%);
+$ph-catalog-2: linear-gradient(135deg, #2D83AC 0%, #123546 100%);
+
+main.tours-catalog-page {
+  max-width: 100% !important;
+  margin-top: 20px !important;
+  margin-bottom: 60px !important;
+  width: 100% !important;
+
+  .tours-container {
+    width: 100%;
+    max-width: 1320px;
+    padding: 0 30px;
+    margin: 0 auto;
+  }
+
+  .tours-catalog-page__title {
+    font-family: $font-accent;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    color: $catalog-title-color;
+    margin-bottom: 12px;
+  }
+
+  .tours-filters {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 40px;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    width: 100%;
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      &--dir { 
+        flex: 1 1 240px; 
+        min-width: 0; 
+      }
+
+      &--price { 
+        flex: 0 0 130px; 
+      }
+
+      &--currency { 
+        flex: 0 0 120px; 
+      }
+
+      &--days { 
+        flex: 0 0 160px; 
+      }
+    }
+
+    &__label {
+      font-family: $font-accent;
+      font-weight: 700;
+      font-size: 15px;
+      color: $catalog-title-color;
+      white-space: nowrap;
+    }
+
+    &__input,
+    &__select {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 21px;
+      border: 1.5px solid $search-border;
+      outline: none;
+      font-family: $font-main;
+      font-size: 14px;
+      background-color: $white;
+      color: $catalog-title-color;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: $catalog-btn-bg;
+        box-shadow: 0 0 0 3px rgba(31, 53, 86, 0.1);
+      }
+
+      &::placeholder {
+        color: #94A3B8;
+      }
+    }
+
+    &__select-wrap {
+      position: relative;
+      width: 100%;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid $catalog-title-color;
+        border-bottom: 2px solid $catalog-title-color;
+        transform: translateY(-70%) rotate(45deg);
+        pointer-events: none;
+      }
+    }
+
+    &__select {
+      appearance: none;
+      cursor: pointer;
+      padding-right: 28px;
+    }
+
+    // кнопка "Застосувати"
+    &__btn {
+      height: 42px;
+      padding: 0 24px;
+      border-radius: 21px;
+      background-color: $catalog-btn-bg;
+      color: #FFFFFF !important;
+      border: none;
+      font-family: $font-accent; 
+      font-weight: 400;        
+      font-size: 16px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 0.25s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: $btn-hover;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .tours-catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    row-gap: 32px;
+    width: 100%;
+  }
+
+  .tour-card {
+    background: $white;
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 18px rgba(13, 32, 56, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(13, 32, 56, 0.12);
+    }
+
+    &__img {
+      width: 100%;
+      height: 190px;
+      background-size: cover;
+      background-position: center;
+
+      &--0 { background: $ph-catalog-0; }
+      &--1 { background: $ph-catalog-1; }
+      &--2 { background: $ph-catalog-2; }
+    }
+
+    &__body {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    &__title {
+      font-family: $font-accent;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.2;
+      color: $catalog-title-color;
+      margin-bottom: 4px;
+    }
+
+    &__meta {
+      font-family: $font-accent;
+      font-weight: 400;
+      font-size: 15px;
+      color: #5B6E85;
+      margin-bottom: 16px;
+    }
+
+    &__row {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    &__price {
+      font-family: $font-accent;
+      font-weight: 700;
+      font-size: 20px;
+      color: $catalog-title-color;
+      white-space: nowrap;
+    }
+
+    &__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 38px;
+      border-radius: 19px;
+      background-color: $catalog-btn-bg;
+      color: #FFFFFF !important;
+      text-decoration: none;
+      font-family: $font-accent;
+      font-weight: 400;
+      font-size: 16px;
+      transition: background-color 0.25s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: $btn-hover;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
