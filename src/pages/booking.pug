@@ -37,24 +37,24 @@ main.booking-page
           form.booking-form
             .booking-form__row
               .booking-form__field
-                label.booking-form__label Ім'я
-                input.booking-form__input(type="text" placeholder="Дар'я")
+                label.booking-form__label.booking-form__label--required Ім'я
+                input.booking-form__input(type="text" placeholder="Дар'я" required autocomplete="given-name")
               .booking-form__field
-                label.booking-form__label Прізвище
-                input.booking-form__input(type="text" placeholder="Цілуйко")
+                label.booking-form__label.booking-form__label--required Прізвище
+                input.booking-form__input(type="text" placeholder="Цілуйко" required autocomplete="family-name")
 
             .booking-form__row
               .booking-form__field
-                label.booking-form__label Телефон
-                input.booking-form__input(type="tel" placeholder="+380 (97) 123-45-67")
+                label.booking-form__label.booking-form__label--required Телефон
+                input.booking-form__input(type="tel" placeholder="+380 (97) 123-45-67" required autocomplete="tel")
               .booking-form__field
-                label.booking-form__label Пошта
-                input.booking-form__input(type="email" placeholder="itsdariawx@gmail.com")
+                label.booking-form__label.booking-form__label--required Пошта
+                input.booking-form__input(type="email" placeholder="itsdariawx@gmail.com" required autocomplete="email")
 
             .booking-form__row
               .booking-form__field
-                label.booking-form__label Номер паспорту
-                input.booking-form__input(type="text" placeholder="123456789")
+                label.booking-form__label.booking-form__label--required Номер паспорту
+                input.booking-form__input(type="text" placeholder="123456789" required autocomplete="off")
               .booking-form__field
                 label.booking-form__label Серія (якщо є)
                 input.booking-form__input(type="text" placeholder="")
@@ -62,6 +62,8 @@ main.booking-page
             .booking-form__field.booking-form__field--full
               label.booking-form__label Коментар
               textarea.booking-form__textarea(placeholder="Ваші побажання до поїздки...")
+
+            p#travelerError.booking-form__error(role="alert")
 
       //- права колонка
       .booking-right
@@ -77,7 +79,7 @@ main.booking-page
                 span.booking-payment-option__sub сплата 100 % вартості
 
             label.booking-payment-option
-              input#paymentReserve(type="radio" name="payment_method" value="reserve" onchange="document.getElementById('bonusModal').style.display='flex'")
+              input#paymentReserve(type="radio" name="payment_method" value="reserve")
               span.booking-payment-option__custom
               span.booking-payment-option__text
                 span.booking-payment-option__title Бронювання
@@ -88,12 +90,12 @@ main.booking-page
           .booking-summary__header
             h2.booking-summary__title Ваше замовлення
             .booking-currency-wrap
-              select.booking-currency-select
+              select#bookingCurrency.booking-currency-select
                 option(value="UAH" selected) ₴ UAH
                 option(value="USD") $ USD
                 option(value="EUR") € EUR
 
-          p.booking-summary__tour-name Карпати: Тиса та Синевир | 5 грудня
+          p.booking-summary__tour-name Завантаження…
 
           .booking-summary__row
             span#tourCalc.booking-summary__tour-calc Тур * 1
@@ -134,23 +136,30 @@ main.booking-page
           button#payBtn.booking-submit-btn(type="button")
             span.price-full
               | Оплатити 
-              span#submitFull 8 304
-              |  грн
+              span#submitFull 8 304 грн
             span.price-reserve
               | Забронювати за 
-              span#submitReserve 2 670
-              |  грн
+              span#submitReserve 2 670 грн
 
           span.booking-methods-text Картка | Apple Pay | Google Pay
 
   //- модальне вікно при виборі бронювання (пояснює, що бонуси не можна застосувати)
   #bonusModal.booking-modal(style="display: none;")
-    .booking-modal__overlay(onclick="document.getElementById('bonusModal').style.display='none'")
+    .booking-modal__overlay
     .booking-modal__content
-      button.booking-modal__close(type="button" onclick="document.getElementById('bonusModal').style.display='none'") ×
+      button.booking-modal__close(type="button") ×
       h3.booking-modal__title Бонуси недоступні
       p.booking-modal__text Бали вражень можна застосувати лише при повній оплаті туру. При бронюванні сплачується предоплата 30%.
-      button.booking-modal__btn(type="button" onclick="document.getElementById('bonusModal').style.display='none'") Зрозуміло
+      button.booking-modal__btn(type="button") Зрозуміло
+
+  //- модальне вікно: для оплати потрібен вхід в акаунт
+  #loginModal.booking-modal(style="display: none;")
+    .booking-modal__overlay
+    .booking-modal__content
+      button.booking-modal__close(type="button") ×
+      h3.booking-modal__title Потрібен вхід в акаунт
+      p.booking-modal__text Щоб забронювати або оплатити тур, спочатку увійдіть в акаунт. Квиток буде додано у ваш профіль.
+      button#loginGo.booking-modal__btn(type="button") Увійти
 
   //- модальне вікно оплати
   #payModal.booking-modal(style="display: none;" data-state="form")
@@ -191,7 +200,7 @@ main.booking-page
       .pay-screen.pay-screen--success
         h3.booking-modal__title.pay-title-row
           span#successTitle Оплата пройшла успішно
-          span.pay-check ✓
+          span.pay-check ✔
         p#successSubtitle.pay-center-text.pay-success-sub
         #ticketList.pay-tickets
         .pay-actions
@@ -200,266 +209,10 @@ main.booking-page
 
       //- екран 4: відмова
       .pay-screen.pay-screen--error
-        .pay-icon.pay-icon--fail ✕
+        .pay-icon.pay-icon--fail ✖
         h3.booking-modal__title.pay-center-title Платіж відхилено
         p.pay-center-text Банк відхилив операцію. Спробуйте іншу картку.
         button#payRetry.booking-modal__btn(type="button") Спробувати ще раз
 
   script(src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js")
   script(src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js")
-
-  script.
-    (function () {
-      var TOUR_PRICE = 8900;   // ціна за 1 мандрівника
-      var BALANCE = 596;       // баланс бонусів
-      var MAX_BONUS_SHARE = 0.5;
-      var RESERVE_SHARE = 0.3;
-
-      var $ = function (id) { return document.getElementById(id); };
-      var minus = document.querySelector('.booking-counter__btn--minus');
-      var plus = document.querySelector('.booking-counter__btn--plus');
-      var count = document.querySelector('.booking-counter__input');
-      var dots = document.querySelectorAll('.booking-dot');
-      var range = $('bonusRange');
-      var input = $('bonusInput');
-
-      function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
-      function clamp(v, max) {
-        v = parseInt(v, 10);
-        if (isNaN(v) || v < 0) v = 0;
-        return Math.min(v, max);
-      }
-      function travelers() {
-        var n = parseInt(count.value, 10);
-        if (isNaN(n) || n < 1) n = 1;
-        return Math.min(n, 3);
-      }
-
-      var state = { total: TOUR_PRICE, bonus: 0, reserve: 0, n: 1 };
-
-      function render(fromInput) {
-        var n = travelers();
-        var total = TOUR_PRICE * n;
-        var limit = Math.min(BALANCE, Math.floor(total * MAX_BONUS_SHARE));
-        range.max = limit;
-        input.max = limit;
-
-        var bonus = clamp(fromInput ? input.value : range.value, limit);
-        range.value = bonus;
-        if (!fromInput) input.value = bonus;
-
-        var reserve = Math.round(total * RESERVE_SHARE);
-        state = { total: total, bonus: bonus, reserve: reserve, n: n };
-
-        $('tourCalc').textContent = 'Тур * ' + n;
-        $('tourFull').textContent = fmt(total) + ' грн';
-        $('tourReserve').textContent = fmt(reserve) + ' грн';
-        $('bonusDiscount').textContent = '-' + fmt(bonus) + ' грн';
-        $('totalFull').textContent = fmt(total - bonus) + ' грн';
-        $('submitFull').textContent = fmt(total - bonus);
-        $('totalReserve').textContent = fmt(reserve) + ' грн';
-        $('submitReserve').textContent = fmt(reserve);
-        $('reserveTotal').textContent = fmt(total) + ' грн';
-        $('reserveRest').textContent = fmt(total - reserve) + ' грн';
-
-        minus.disabled = n <= 1;
-        plus.disabled = n >= 3;
-        for (var i = 0; i < dots.length; i++) {
-          dots[i].style.display = i < n ? '' : 'none';
-        }
-      }
-
-      minus.addEventListener('click', function () { count.value = travelers() - 1; render(false); });
-      plus.addEventListener('click', function () { count.value = travelers() + 1; render(false); });
-      count.addEventListener('input', function () { render(false); });
-      count.addEventListener('blur', function () { count.value = travelers(); render(false); });
-      range.addEventListener('input', function () { render(false); });
-      input.addEventListener('input', function () { render(true); });
-      input.addEventListener('blur', function () { render(false); });
-
-      // фейк оплата
-      var payBtn = $('payBtn');
-      var payModal = $('payModal');
-      var payReserveRadio = $('paymentReserve');
-      var fCard = $('cardNumber'), fExp = $('cardExp'), fCvv = $('cardCvv'), fName = $('cardName');
-      var payInfo = { amount: 0, reserve: false };
-
-      function setState(s) { payModal.setAttribute('data-state', s); }
-      function closePay() {
-        var st = payModal.getAttribute('data-state');
-        if (st === 'processing' || st === 'success') return;
-        payModal.style.display = 'none';
-      }
-      function clearInvalid() {
-        var els = payModal.querySelectorAll('.pay-field--invalid');
-        for (var i = 0; i < els.length; i++) els[i].classList.remove('pay-field--invalid');
-        $('payError').textContent = '';
-      }
-
-      function openPay() {
-        var isReserve = payReserveRadio.checked;
-        payInfo = { amount: isReserve ? state.reserve : state.total - state.bonus, reserve: isReserve };
-        $('payAmount').textContent = fmt(payInfo.amount) + ' грн';
-        $('payConfirm').textContent = 'Сплатити ' + fmt(payInfo.amount) + ' грн';
-        $('payModeLabel').textContent = isReserve ? 'Бронювання (предоплата 30%)' : 'Повна оплата';
-        fCard.value = fExp.value = fCvv.value = fName.value = '';
-        clearInvalid();
-        setState('form');
-        payModal.style.display = 'flex';
-      }
-
-      // маски полів
-      fCard.addEventListener('input', function () {
-        fCard.value = fCard.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
-      });
-      fExp.addEventListener('input', function () {
-        var d = fExp.value.replace(/\D/g, '').slice(0, 4);
-        fExp.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d;
-      });
-      fCvv.addEventListener('input', function () {
-        fCvv.value = fCvv.value.replace(/\D/g, '').slice(0, 3);
-      });
-
-      function invalid(el) { el.parentNode.classList.add('pay-field--invalid'); }
-
-      function validate() {
-        clearInvalid();
-        var ok = true;
-        if (fCard.value.replace(/\D/g, '').length !== 16) { invalid(fCard); ok = false; }
-
-        var m = parseInt(fExp.value.slice(0, 2), 10);
-        var y = parseInt(fExp.value.slice(3, 5), 10);
-        var now = new Date();
-        var expired = isNaN(m) || isNaN(y) || m < 1 || m > 12 ||
-          (2000 + y) < now.getFullYear() ||
-          ((2000 + y) === now.getFullYear() && m < now.getMonth() + 1);
-        if (fExp.value.length !== 5 || expired) { invalid(fExp); ok = false; }
-
-        if (fCvv.value.length !== 3) { invalid(fCvv); ok = false; }
-        if (fName.value.trim().length < 2) { invalid(fName); ok = false; }
-
-        if (!ok) $('payError').textContent = 'Перевірте виділені поля';
-        return ok;
-      }
-
-      function confirmPay() {
-        if (!validate()) return;
-        var declined = fCard.value.replace(/\D/g, '') === '4000000000000002'; // тестова відмова
-        setState('processing');
-        setTimeout(function () {
-          if (declined) { setState('error'); return; }
-          showSuccess();
-        }, 1800);
-      }
-
-      // екран "оплата успішна" = генеруємо код квитка та схематичний QR
-      var CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-      function makeCode() {
-        var c = 'WL-';
-        for (var i = 0; i < 6; i++) c += CODE_CHARS.charAt(Math.floor(Math.random() * CODE_CHARS.length));
-        return c;
-      }
-
-      // схематичний «QR» із коду квитка
-      function qrSvg(code) {
-        var N = 11, seed = 7, i, x, y, out = '';
-        for (i = 0; i < code.length; i++) seed = (seed * 31 + code.charCodeAt(i)) % 2147483647;
-        function rnd() { seed = (seed * 48271) % 2147483647; return seed / 2147483647; }
-        function inFinder(cx, cy) {
-          return (cx < 3 && cy < 3) || (cx >= N - 3 && cy < 3) || (cx < 3 && cy >= N - 3);
-        }
-        for (y = 0; y < N; y++) for (x = 0; x < N; x++) {
-          if (!inFinder(x, y) && rnd() > 0.5) out += '<rect x="' + x + '" y="' + y + '" width="1" height="1"/>';
-        }
-        [[0, 0], [N - 3, 0], [0, N - 3]].forEach(function (f) {
-          out += '<rect x="' + f[0] + '" y="' + f[1] + '" width="3" height="3"/>' +
-                 '<rect x="' + (f[0] + 1) + '" y="' + (f[1] + 1) + '" width="1" height="1" fill="#fff"/>';
-        });
-        return '<svg viewBox="0 0 ' + N + ' ' + N + '" fill="#0D2038" shape-rendering="crispEdges">' + out + '</svg>';
-      }
-
-      var STAR = '<path d="M16 0C16 8.83656 8.83656 16 0 16C8.83656 16 16 23.1634 16 32C16 23.1634 23.1634 16 32 16C23.1634 16 16 8.83656 16 0Z" fill="#FFFFFF"/>';
-      function star(cls, size, opacity) {
-        return '<svg class="booking-ticket__star ' + cls + '" width="' + size + '" height="' + size +
-               '" viewBox="0 0 32 32" opacity="' + opacity + '">' + STAR + '</svg>';
-      }
-
-      function ticketHtml(idx, code, n, date, title, status) {
-        return '' +
-          '<div class="booking-ticket">' +
-            star('booking-ticket__star--1', 22, 0.6) +
-            star('booking-ticket__star--2', 18, 0.5) +
-            star('booking-ticket__star--3', 18, 0.6) +
-            '<div class="booking-ticket__main">' +
-              '<p class="booking-ticket__tag">Електронний квиток ' + idx + '  |  WAYLO</p>' +
-              '<h3 class="booking-ticket__title">' + title + '</h3>' +
-              '<div class="booking-ticket__grid">' +
-                '<div class="booking-ticket__col"><span class="booking-ticket__label">Дата виїзду</span><span class="booking-ticket__val">' + date + '</span></div>' +
-                '<div class="booking-ticket__col"><span class="booking-ticket__label">К-сть мандрівників</span><span class="booking-ticket__val">' + n + '</span></div>' +
-                '<div class="booking-ticket__col"><span class="booking-ticket__label">Статус замовлення</span><span class="booking-ticket__val">' + status + '</span></div>' +
-                '<div class="booking-ticket__col"><span class="booking-ticket__label">Код квитка</span><span class="booking-ticket__val">' + code + '</span></div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="booking-ticket__qr-side">' +
-              '<div class="booking-ticket__qr">' + qrSvg(code) + '</div>' +
-              '<span class="booking-ticket__code">' + code + '</span>' +
-            '</div>' +
-          '</div>';
-      }
-
-      function showSuccess() {
-        var parts = document.querySelector('.booking-summary__tour-name').textContent.split('|');
-        var title = parts[0].trim();
-        var date = (parts[1] || '').trim();
-        var n = state.n;
-        var reserve = payInfo.reserve;
-
-        $('successTitle').textContent = reserve ? 'Бронювання підтверджено' : 'Оплата пройшла успішно';
-        $('successSubtitle').textContent = reserve
-          ? 'Передоплату ' + fmt(payInfo.amount) + ' грн сплачено. Залишок ' + fmt(state.total - payInfo.amount) +
-            ' грн потрібно доплатити.'
-          : 'Сплачено ' + fmt(payInfo.amount) + ' грн. Квиток надіслано на e-mail та додано в профіль.';
-
-        $('ticketList').innerHTML = ticketHtml(1, makeCode(), n, date, title, reserve ? 'Заброньовано' : 'Сплачено');
-
-        setState('success');
-        payModal.querySelector('.booking-modal__content').scrollTop = 0;
-      }
-
-      // завантаження квитка в PDF
-      $('printTickets').addEventListener('click', function () {
-        var btn = $('printTickets');
-        var el = document.querySelector('.booking-ticket');
-        if (!window.htmlToImage || !window.jspdf || !el) { window.print(); return; }
-
-        var code = el.querySelector('.booking-ticket__code').textContent;
-        var label = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Готуємо PDF…';
-
-        window.htmlToImage.toPng(el, { pixelRatio: 2, cacheBust: true })
-          .then(function (dataUrl) {
-            var w = el.offsetWidth, h = el.offsetHeight, pad = 24;
-            var pdf = new window.jspdf.jsPDF({
-              orientation: w > h ? 'l' : 'p',
-              unit: 'px',
-              format: [w + pad * 2, h + pad * 2]
-            });
-            pdf.addImage(dataUrl, 'PNG', pad, pad, w, h);
-            pdf.save('WAYLO-' + code + '.pdf');
-          })
-          .catch(function (e) { console.error('PDF error:', e); window.print(); })
-          .then(function () {
-            btn.disabled = false;
-            btn.textContent = label;
-          });
-      });
-
-      payBtn.addEventListener('click', openPay);
-      $('payConfirm').addEventListener('click', confirmPay);
-      $('payRetry').addEventListener('click', function () { setState('form'); });
-      $('payClose').addEventListener('click', closePay);
-      $('payOverlay').addEventListener('click', closePay);
-
-      render(false);
-    })();

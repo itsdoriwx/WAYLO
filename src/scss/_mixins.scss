@@ -1,0 +1,27 @@
+@mixin brand-gradient($angle: 135deg, $from: #1F3556, $to: #4474BC) {
+    background: linear-gradient($angle, $from 0%, $to 100%);
+  }
+
+  @mixin card($radius: 22px, $padding: 16px 20px, $shadow: 0 4px 16px rgba(13, 32, 56, 0.04)) {
+    background-color: #FFFFFF;
+    border-radius: $radius;
+    padding: $padding;
+    box-shadow: $shadow;
+  }
+  
+  @mixin hide-number-spinners {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  @mixin respond($max-width) {
+    @media screen and (max-width: $max-width) {
+      @content;
+    }
+  }

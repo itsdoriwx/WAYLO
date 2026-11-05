@@ -1,17 +1,14 @@
 import './scss/main.scss'
+import { initAuth } from './ts/auth'
+import { initBooking } from './ts/booking'
+import { initCatalog } from './ts/catalog'
+import { initDetails } from './ts/details'
+import { initHome } from './ts/home'
 
-const chips = document.querySelectorAll<HTMLButtonElement>('.chip')
-const cards = document.querySelectorAll<HTMLElement>('.tour-card')
+initAuth()      // шапка, футер, вхід, профіль
+initHome()      
+initCatalog()   
+initDetails()   
+initBooking()   
 
-if (chips.length > 0 && cards.length > 0) {
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('chip--active'))
-      chip.classList.add('chip--active')
-      const f = chip.dataset.filter
-      cards.forEach(card => {
-        card.hidden = !(f === 'all' || card.dataset.category === f)
-      })
-    })
-  })
-}
+

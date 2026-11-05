@@ -123,32 +123,32 @@
   
   @keyframes mascotFloat {
     0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-6px); }
+    50% { transform: translateY(-6px); }
   }
   @keyframes mascotHop {
     0%, 100% { transform: translateY(0); }
-    40%      { transform: translateY(-12px); }
+    40% { transform: translateY(-12px); }
   }
   @keyframes mascotShadow {
     0%, 100% { transform: scale(1); opacity: 0.16; }
-    50%      { transform: scale(0.85); opacity: 0.1; }
+    50% { transform: scale(0.85); opacity: 0.1; }
   }
   @keyframes mascotTwinkle {
     0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50%      { transform: scale(1.25) rotate(18deg); opacity: 0.8; }
+    50% { transform: scale(1.25) rotate(18deg); opacity: 0.8; }
   }
   @keyframes mascotBlink {
     0%, 92%, 100% { transform: scaleY(1); }
-    95%           { transform: scaleY(0.1); }
+    95% { transform: scaleY(0.1); }
   }
   @keyframes mascotWave {
     0%, 100% { transform: rotate(-14deg); }
-    50%      { transform: rotate(14deg); }
+    50% { transform: rotate(14deg); }
   }
   @keyframes mascotHint {
-    0%   { opacity: 0; transform: translateY(6px); }
-    6%   { opacity: 1; transform: none; }
-    92%  { opacity: 1; transform: none; }
+    0% { opacity: 0; transform: translateY(6px); }
+    6% { opacity: 1; transform: none; }
+    92% { opacity: 1; transform: none; }
     100% { opacity: 0; transform: translateY(4px); }
   }
   
@@ -229,7 +229,7 @@
       font-size: 22px;
       line-height: 1;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
   
       &:hover {
         background: rgba(255, 255, 255, 0.32);
@@ -308,7 +308,7 @@
       font-weight: 600;
       color: #0D2038;
       cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      transition: all 0.2s ease, border-color 0.2s ease;
   
       &:hover {
         background: #DCE6EF;
@@ -375,11 +375,11 @@
   
   @keyframes chatMsgIn {
     from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: none; }
+    to { opacity: 1; transform: none; }
   }
   @keyframes chatDot {
     0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
-    30%           { transform: translateY(-4px); opacity: 1; }
+    30% { transform: translateY(-4px); opacity: 1; }
   }
   
   @media (max-width: 480px) {
@@ -395,15 +395,6 @@
       width: auto;
       max-width: none;
       bottom: 116px;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .mascot *,
-    .chat,
-    .chat * {
-      animation: none !important;
-      transition: none !important;
     }
   }
   

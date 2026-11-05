@@ -22,7 +22,7 @@
   height: 26px;
   border-radius: 50%;
   flex-shrink: 0;
-  background: linear-gradient(180deg, #375E99 0%, #121F33 100%);
+  background: center / cover no-repeat url('/images/avatar.jpg'), linear-gradient(180deg, #375E99 0%, #121F33 100%);
 }
 
 .header__profile-name {
@@ -40,7 +40,7 @@
 
 main.profile-main {
   max-width: 100% !important;
-  margin-top: 20px !important; 
+  margin-top: 20px !important;
   margin-bottom: 40px !important;
   width: 100% !important;
 }
@@ -60,12 +60,12 @@ main.profile-main {
 }
 
 .profile-sidebar {
-  width: 350px;
+  width: 400px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px; 
-  zoom: 1.02; 
+  gap: 12px;
+  zoom: 1.1;
   transform-origin: top left;
 }
 
@@ -74,13 +74,12 @@ main.profile-main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 0px;
 
   &__avatar {
-    width: 72px;  
+    width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: linear-gradient(180deg, #375E99 0%, #121F33 100%);
+    background: center / cover no-repeat url('/images/avatar.jpg'), linear-gradient(180deg, #375E99 0%, #121F33 100%);
     margin-bottom: 6px;
   }
 
@@ -99,12 +98,97 @@ main.profile-main {
     color: #5B6E85;
     margin-top: 2px;
   }
+
+  &__edit {
+    margin-top: 8px;
+    padding: 5px 14px;
+    border: 1.5px solid #1F3556;
+    border-radius: 16px;
+    background: transparent;
+    color: #1F3556;
+    font-family: $font-accent;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: #1F3556;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.profile-edit {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: #5B6E85;
+  }
+
+  &__input {
+    padding: 7px 11px;
+    border: 1.5px solid #BFD6E6;
+    border-radius: 10px;
+    background: #FFFFFF;
+    font-family: $font-main;
+    font-size: 13px;
+    color: #0D2038;
+    outline: none;
+
+    &:focus {
+      border-color: #1F3556;
+    }
+  }
+
+  &__error {
+    font-size: 12px;
+    color: #C0392B;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__save,
+  &__cancel {
+    flex: 1;
+    padding: 7px 0;
+    border-radius: 16px;
+    font-family: $font-accent;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  &__save {
+    border: 0;
+    background: #1F3556;
+    color: #FFFFFF;
+  }
+
+  &__cancel {
+    border: 1.5px solid #1F3556;
+    background: transparent;
+    color: #1F3556;
+  }
 }
 
 .balance-card {
   width: 100%;
   border-radius: 22px;
-  background: linear-gradient(180deg, #1F3556 0%, #4474BC 100%);
+  @include brand-gradient(180deg);
   padding: 16px 20px;
   color: #DCE6EF;
   display: flex;
@@ -137,6 +221,7 @@ main.profile-main {
     line-height: 1;
     background: linear-gradient(180deg, #DCE6EF 0%, #8AAFD5 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -151,10 +236,7 @@ main.profile-main {
 
 .history-card {
   width: 100%;
-  border-radius: 22px;
-  background-color: $white;
-  padding: 16px 20px;
-  box-shadow: 0 4px 16px rgba(13, 32, 56, 0.04);
+  @include card(22px, 16px 20px);
 
   &__title {
     font-family: $font-accent;
@@ -211,7 +293,6 @@ main.profile-main {
   }
 }
 
-// права частинка - квитки
 .profile-tickets {
   flex: 1;
   min-width: 0;
@@ -247,30 +328,30 @@ main.profile-main {
 .ticket-card {
   position: relative;
   width: 100%;
-  height: 200px; 
-  border-radius: 26px;
-  background: linear-gradient(135deg, #1F3556 0%, #4474BC 100%);
-  padding: 18px 28px;
+  height: 150px;
+  border-radius: 22px;
+  @include brand-gradient(135deg);
+  padding: 12px 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   &__notch {
     position: absolute;
-    right: 200px;
-    width: 30px;
-    height: 30px;
+    right: 146px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     background-color: #F4F7FA !important;
     z-index: 5;
 
-    &--top { top: -15px; }
-    &--bottom { bottom: -15px; }
+    &--top { top: -13px; }
+    &--bottom { bottom: -13px; }
   }
 
   &__dash-line {
     position: absolute;
-    right: 214px;
+    right: 158px;
     top: 0;
     bottom: 0;
     width: 0;
@@ -284,21 +365,21 @@ main.profile-main {
     pointer-events: none;
     z-index: 1;
 
-    &--1 { top: 18px; right: 240px; transform: rotate(15deg); }
-    &--2 { bottom: 14px; right: 24px; transform: rotate(-25deg); }
-    &--3 { top: 96px; left: 190px; transform: rotate(35deg); }
+    &--1 { top: 14px; right: 180px; transform: rotate(15deg); }
+    &--2 { bottom: 10px; right: 16px; transform: rotate(-25deg); }
+    &--3 { top: 76px; left: 170px; transform: rotate(35deg); }
   }
 
   &__main {
     flex: 1;
     min-width: 0;
-    padding-right: 28px;
+    padding-right: 20px;
     z-index: 2;
   }
 
   &__tag {
     font-family: $font-accent;
-    font-size: 12px;
+    font-size: 11px;
     color: rgba(255, 255, 255, 0.65);
     margin-bottom: 2px;
   }
@@ -306,10 +387,10 @@ main.profile-main {
   &__tour-title {
     font-family: $font-accent;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 21px;
     color: $white;
     line-height: 1.15;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -317,8 +398,8 @@ main.profile-main {
 
   &__grid {
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 8px 24px;
+    grid-template-columns: 150px 1fr;
+    gap: 6px 18px;
   }
 
   &__col {
@@ -329,20 +410,20 @@ main.profile-main {
 
   &__label {
     font-family: $font-accent;
-    font-size: 12px;
+    font-size: 11px;
     color: #7E90A6;
   }
 
   &__val {
     font-family: $font-accent;
-    font-size: 14px;
+    font-size: 13px;
     color: $white;
     font-weight: 500;
     white-space: nowrap;
   }
 
   &__qr-side {
-    width: 150px;
+    width: 112px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -353,15 +434,22 @@ main.profile-main {
   }
 
   &__qr-box {
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    width: 84px;
+    height: 84px;
+    padding: 6px;
+    border-radius: 10px;
+    background: #FFFFFF;
+  }
+
+  &__qr-box svg {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   &__code {
     font-family: $font-accent;
-    font-size: 14px;
+    font-size: 12px;
     color: $white;
     font-weight: 500;
   }

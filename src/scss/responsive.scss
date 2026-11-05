@@ -1,0 +1,805 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @include respond(1024px) {
+    .container,
+    .header .container {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  
+    main.tours-catalog-page .tours-container {
+      padding: 0 24px;
+    }
+  }
+  
+  @media screen and (min-width: 961px) and (max-width: 1100px) {
+    .ticket-card__tour-title { font-size: 18px; }
+  }
+  
+  @include respond(960px) {
+    .profile-container {
+      padding: 0 24px !important;
+    }
+  
+    .profile-layout {
+      flex-direction: column;
+      gap: 28px;
+    }
+  
+    .profile-sidebar {
+      width: 100%;
+      zoom: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+  
+      .profile-user,
+      .profile-logout-btn {
+        grid-column: 1 / -1;
+      }
+    }
+  
+    .profile-tickets {
+      width: 100%;
+    }
+  }
+  
+  @include respond(860px) {
+    main.tour-details-page {
+      .details-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+  
+      .details-booking-card {
+        width: 100%;
+      }
+  
+      .details-gallery {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        height: 260px;
+      }
+    }
+  
+    main.booking-page {
+      .booking-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+  
+      .booking-left,
+      .booking-right {
+        height: auto;
+      }
+  
+      .booking-card--travelers,
+      .booking-card--payment {
+        height: auto;
+        min-height: 82px;
+      }
+  
+      .booking-payment-options {
+        flex-wrap: wrap;
+        gap: 14px 40px;
+      }
+    }
+  
+    // фільтри каталогу: 6-колонкова сітка замість одного рядка
+    main.tours-catalog-page .tours-filters {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+      align-items: end;
+  
+      &__group--dir { grid-column: 1 / -1; }
+      &__group--price { grid-column: span 2; }
+      &__group--currency { grid-column: span 2; }
+      &__group--days { grid-column: span 3; }
+  
+      &__btn {
+        grid-column: span 3;
+        width: 100%;
+      }
+    }
+  }
+  
+  @include respond(820px) {
+    .tours__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    main.tours-catalog-page .tours-catalog__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 24px;
+    }
+  }
+  
+  @include respond(760px) {
+    .container,
+    .header .container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  
+    .hero {
+      min-height: 0;
+      padding: 36px 0 56px;
+  
+      &__content { max-width: none; }
+  
+      &__title {
+        font-size: 40px;
+        max-width: none;
+      }
+  
+      &__text {
+        font-size: 17px;
+        max-width: 520px;
+      }
+  
+      &__frame {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 210px;
+        height: 270px;
+        margin: 48px auto 8px;
+        padding: 17px 14px 38px 13px;
+        transform: rotate(7deg);
+      }
+    }
+  
+    .section-title { font-size: 34px; }
+  
+    .tours {
+      padding-bottom: 64px;
+  
+      &__all { min-height: 220px; }
+    }
+  
+    .about {
+      padding-bottom: 56px;
+  
+      &__inner { grid-template-columns: 1fr; gap: 28px; }
+      &__title { font-size: 38px; }
+      &__lead { font-size: 15px; }
+      &__item { font-size: 14px; }
+    }
+  
+    .stat {
+      padding: 20px 18px;
+  
+      &__num { font-size: 38px; }
+      &__label { font-size: 13px; }
+    }
+  
+    .footer {
+      &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 24px;
+      }
+  
+      &__col--brand {
+        grid-column: 1 / -1;
+        max-width: none;
+      }
+  
+      &__list a,
+      &__contacts li,
+      &__contacts a {
+        font-size: 15px;
+      }
+  
+      &__contacts { grid-column: auto; }
+    }
+  
+    main.tours-catalog-page .tours-catalog-page__title { font-size: 34px; }
+
+    main.tour-details-page {
+      .details-info__meta-row {
+        flex-wrap: wrap;
+        gap: 6px 14px;
+      }
+  
+      .details-info__meta {
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+  
+      .details-info__rating { margin-left: 0; }
+  
+      // вкладки днів прокручуються вбік, якщо днів багато
+      .details-program__tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+  
+        &::-webkit-scrollbar { display: none; }
+      }
+  
+      .details-program__tab {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 7px 16px;
+      }
+    }
+  
+    .details-modal { padding: 16px; }
+  
+    .details-modal__content {
+      max-height: calc(100vh - 32px);
+      max-height: calc(100dvh - 32px);
+      overflow-y: auto;
+    }
+  
+    .booking-modal {
+      align-items: flex-start;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+  
+      &__overlay { position: fixed; }
+      &__content { margin: auto; }
+    }
+  
+    .pay-modal {
+      max-height: none;
+      overflow-y: visible;
+    }
+  
+    .booking-modal[data-state="success"] .pay-modal {
+      padding: 28px 24px;
+    }
+  
+    .chat {
+      max-height: calc(100vh - 160px);
+      max-height: calc(100dvh - 160px);
+    }
+
+    body:has(.details-sticky-bar) {
+      .mascot { bottom: 86px; }
+      .chat { bottom: 212px; }
+    }
+  
+    .login-main { padding: 20px 16px 28px; }
+    .auth-card { padding: 28px 32px 30px; }
+  
+    .chip {
+      height: 38px;
+      padding: 0 16px;
+    }
+  }
+
+  @include respond(720px) {
+    .header {
+      padding: 12px 0 8px;
+  
+      &__inner {
+        flex-wrap: wrap;
+        row-gap: 12px;
+        column-gap: 12px;
+      }
+  
+      &__logo {
+        order: 1;
+        margin-right: auto;
+        font-size: 22px;
+      }
+
+      &__btn,
+      &__profile-btn {
+        order: 2;
+      }
+  
+      &__btn {
+        width: auto;
+        min-width: 90px;
+        padding: 0 18px;
+        height: 38px;
+      }
+  
+      &__profile-name {
+        max-width: 110px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+  
+      &__nav {
+        order: 3;
+        flex: 1 0 100%;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+  
+        &::-webkit-scrollbar { display: none; }
+      }
+  
+      &__link {
+        font-size: 16px;
+        padding: 8px 16px;
+        white-space: nowrap;
+      }
+  
+      &__search {
+        order: 4;
+        flex: 1 0 100%;
+        width: auto;
+        max-width: none;
+        height: 42px;
+  
+        &-input {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  
+  @include respond(640px) {
+    main.tour-details-page {
+
+      .details-combined-card {
+        flex-direction: column;
+        padding: 18px;
+  
+        &__divider {
+          width: 100%;
+          height: 1px;
+          margin: 16px 0;
+          background: linear-gradient(90deg, rgba(197, 216, 237, 0.2) 0%, #C5D8ED 50%, rgba(197, 216, 237, 0.2) 100%);
+        }
+      }
+    }
+  }
+
+  @include respond(560px) {
+    .tours__grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+  
+    .tour-card {
+      &__img { height: 210px; }
+      &__title { font-size: 20px; }
+      &__meta { font-size: 13px; }
+      &__price { font-size: 17px; }
+      &__btn { width: 104px; height: 38px; font-size: 14px; }
+    }
+  
+    main.tours-catalog-page {
+      .tours-catalog__grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        row-gap: 20px;
+      }
+  
+      .tour-card__img { height: 210px; }
+      .tour-card__btn { height: 40px; }
+    }
+  }
+
+  @include respond(480px) {
+    .container,
+    .header .container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  
+    .hero {
+      padding: 24px 0 40px;
+  
+      &__title { font-size: 34px; }
+      &__text { font-size: 16px; margin-top: 14px; }
+  
+      // пошук: поле і кнопка одна під одною на всю ширину
+      &__search {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 26px;
+      }
+  
+      &__select-wrap { width: 100%; }
+  
+      &__select {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+        font-size: 16px;
+      }
+  
+      &__btn {
+        width: 100%;
+        height: 46px;
+        font-size: 16px;
+      }
+  
+      &__frame {
+        width: 180px;
+        height: 232px;
+        margin: 40px auto 4px;
+        padding: 14px 12px 32px 11px;
+      }
+    }
+  
+    .section-title { font-size: 28px; }
+  
+    .chips { gap: 8px; }
+  
+    .about {
+      &__title { font-size: 32px; }
+  
+      &__stats { gap: 12px; }
+    }
+  
+    .stat {
+      border-radius: 20px;
+      padding: 16px 14px;
+  
+      &__num { font-size: 32px; }
+      &__label { font-size: 12px; margin-top: 6px; }
+    }
+  
+    .journey {
+      padding-bottom: 36px;
+  
+      &__box { padding: 24px 18px 22px; }
+      &__title { font-size: 26px; }
+      &__sub { font-size: 14px; }
+  
+      &__steps {
+        list-style: none;
+        counter-reset: step;
+        margin: 20px auto 0;
+        max-width: 320px;
+        text-align: left;
+  
+        li {
+          counter-increment: step;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          font-size: 16px;
+          line-height: 1.3;
+  
+          &::before {
+            content: counter(step);
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            color: $btn-blue;
+            font-family: $font-accent;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+  
+          & + li { margin-top: 16px; }
+        }
+      }
+    }
+
+    .footer {
+      &__inner { gap: 24px 16px; }
+      &__contacts { grid-column: 1 / -1; }
+  
+      &__contacts li { word-break: break-word; }
+    }
+  
+    main.tours-catalog-page {
+      margin-top: 8px !important;
+      margin-bottom: 40px !important;
+  
+      .tours-container { padding: 0 16px; }
+      .tours-catalog-page__title { font-size: 30px; margin-bottom: 18px; }
+  
+      .tours-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 28px;
+  
+        &__group--dir,
+        &__btn { grid-column: 1 / -1; }
+  
+        &__group--price,
+        &__group--currency,
+        &__group--days { grid-column: span 1; }
+  
+        &__input,
+        &__select {
+          height: 46px;
+          font-size: 16px;
+          border-radius: 23px;
+        }
+  
+        &__btn {
+          height: 46px;
+          font-size: 17px;
+        }
+      }
+    }
+  
+    .tours-filters__error { margin: -14px 0 18px; }
+    .tours-month-tag { margin: -8px 0 20px; }
+
+    main.tour-details-page {
+      margin-top: 8px;
+  
+      .details-container { padding: 0 16px; }
+  
+      .details-gallery {
+        grid-template-columns: minmax(0, 1fr);
+        height: 230px;
+  
+        // друге маленьке фото на телефоні ховаємо
+        &__side { display: none; }
+      }
+  
+      .details-info {
+        &__title { font-size: 24px; }
+        &__description { font-size: 15px; }
+      }
+  
+      .details-program {
+        &__title { font-size: 19px; }
+        &__card { padding: 14px 16px; }
+        &__list li { font-size: 14px; }
+      }
+  
+      .details-modal-btn { height: 34px; }
+      .details-question-btn { height: 42px; }
+      .details-date-option { padding: 11px 12px; }
+    }
+  
+    .details-sticky-bar {
+      padding: 12px 0;
+  
+      &__container { padding: 0 16px; gap: 10px; }
+      &__price { font-size: 19px; }
+      &__sub { font-size: 11px; }
+      &__actions { gap: 8px; }
+    }
+  
+    .details-btn {
+      height: 40px;
+      padding: 0 14px;
+      font-size: 13px;
+    }
+
+    .login-main { padding: 12px 12px 24px; }
+  
+    .auth-card {
+      padding: 24px 18px 26px;
+      border-radius: 24px;
+  
+      &__title { font-size: 28px; }
+  
+      &__input { height: 48px; font-size: 16px; }
+      &__google-btn,
+      &__btn-submit { height: 48px; }
+    }
+  
+    .profile-container { padding: 0 16px !important; }
+  
+    main.profile-main { margin-top: 8px !important; }
+  
+    .profile-sidebar {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  
+    .profile-user__name { font-size: 24px; }
+    .profile-edit__input { font-size: 16px; padding: 10px 12px; }
+  
+    .history-card__item { font-size: 13px; gap: 10px; }
+    .history-card__points { font-size: 13px; }
+  
+    .profile-tickets {
+      &__header { margin-bottom: 14px; }
+      &__title { font-size: 30px; }
+      &__subtitle { font-size: 14px; }
+    }
+
+    .ticket-card {
+      height: auto;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+  
+      &__dash-line { display: none; }
+  
+      &__notch {
+        right: auto;
+        top: auto;
+        width: 24px;
+        height: 24px;
+  
+        &--top { left: -12px; bottom: 91px; }
+        &--bottom { left: auto; right: -12px; bottom: 91px; }
+      }
+  
+      &__star {
+        &--1 { top: 12px; right: 14px; }
+        &--2 { bottom: 100px; right: 12px; }
+        &--3 { display: none; }
+      }
+  
+      &__main {
+        padding-right: 0;
+        padding-bottom: 16px;
+      }
+  
+      &__tag { font-size: 11px; }
+  
+      &__tour-title {
+        font-size: 20px;
+        white-space: normal;
+        margin-bottom: 12px;
+      }
+  
+      &__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 14px;
+      }
+  
+      &__label { font-size: 11px; }
+      &__val { font-size: 14px; }
+  
+      &__qr-side {
+        width: 100%;
+        height: 88px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 2px dashed rgba(244, 247, 250, 0.65);
+      }
+  
+      &__qr-box {
+        width: 72px;
+        height: 72px;
+        padding: 5px;
+      }
+  
+      &__code { font-size: 15px; }
+    }
+  
+    main.booking-page {
+      margin-top: 12px;
+      padding: 0 16px;
+  
+      .booking-title { font-size: 24px; }
+  
+      .booking-card--traveler-data { padding: 16px; }
+  
+      // всі поля форми - в одну колонку
+      .booking-form__row { grid-template-columns: 1fr; gap: 14px; }
+  
+      .booking-form__input,
+      .booking-form__textarea {
+        font-size: 16px;
+        padding: 10px 12px;
+      }
+  
+      .booking-form__textarea { min-height: 80px; }
+  
+      .booking-counter__btn { width: 36px; height: 36px; font-size: 17px; }
+      .booking-counter__input { font-size: 18px; }
+  
+      .booking-payment-options { gap: 14px 24px; }
+  
+      .booking-currency-select { font-size: 15px; padding: 7px 28px 7px 12px; }
+  
+      .booking-bonus-input { font-size: 16px; width: 64px; height: 38px; }
+  
+      .booking-submit-btn { height: 48px; font-size: 16px; }
+  
+      .booking-nav-btn { width: 38px; height: 38px; }
+    }
+
+    .booking-ticket {
+      padding: 18px 18px 16px;
+      gap: 12px;
+  
+      &__main { padding-right: 0; }
+      &__title { font-size: 22px; }
+  
+      &__qr-side {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 2px dashed rgba(244, 247, 250, 0.65);
+      }
+  
+      &__qr { width: 84px; height: 84px; }
+      &__code { font-size: 15px; }
+    }
+
+    .booking-modal {
+      padding: 12px;
+  
+      &__content {
+        border-radius: 26px;
+        padding: 26px 20px 24px;
+      }
+  
+      &__close { top: 12px; right: 16px; }
+      &__title { font-size: 22px; }
+      &__text { font-size: 15px; }
+    }
+  
+    .pay-field__input { font-size: 16px; }
+  
+    .booking-modal[data-state="success"] .pay-modal { padding: 24px 14px 22px; }
+  
+    .pay-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+  
+    .pay-btn {
+      width: 100%;
+      padding: 0 18px;
+    }
+  
+    // чат: на всю ширину, маскот менший
+    .mascot {
+      right: 10px;
+      bottom: 10px;
+  
+      &__btn { width: 80px; }
+      &__hint { right: 44px; bottom: 80px; max-width: 160px; font-size: 12px; }
+    }
+  
+    .chat {
+      bottom: 100px;
+      border-radius: 20px;
+  
+      &__input { font-size: 16px; }
+      &__msg { max-width: 88%; }
+    }
+  
+    body:has(.details-sticky-bar) {
+      .mascot { bottom: 76px; }
+      .chat { bottom: 164px; }
+    }
+  }
+
+  @include respond(360px) {
+    .hero__title { font-size: 30px; }
+    .section-title { font-size: 25px; }
+    .about__title { font-size: 28px; }
+  
+    .header__link { padding: 8px 12px; font-size: 15px; }
+  
+    .ticket-card__grid { grid-template-columns: 1fr; }
+    .ticket-card__notch--top,
+    .ticket-card__notch--bottom { bottom: 91px; }
+  }
+
+  .journey__steps { display: none; }
+  
+  @include respond(640px) {
+    .journey__svg { display: none; }
+    .journey__steps { display: block; }
+  }

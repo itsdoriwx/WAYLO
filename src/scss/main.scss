@@ -18,6 +18,8 @@ $ph-2: linear-gradient(135deg, #12364A 0%, #2F85AE 100%);
 $font-main: 'Inter', sans-serif;
 $font-accent: 'Istok Web', sans-serif;
 
+@import 'mixins';
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -264,7 +266,7 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 14px;
-    background: $white center / cover no-repeat url('/images/hero-main.jpg');
+    background: $white center / cover no-repeat url('/images/main.jpg');
   }
 }
 
@@ -284,12 +286,12 @@ main {
   &__grid {
     margin-top: 22px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr; 
     gap: 20px 20px;
   }
 
   &__all {
-    aspect-ratio: 1 / 1.14;
     align-self: stretch;
     display: flex;
     flex-direction: column;
@@ -383,7 +385,7 @@ main {
 
   &__img {
     height: 246px;
-    background-image: var(--img), var(--ph);
+    background-image: var(--img, none), var(--ph);
     background-size: cover;
     background-position: center;
 
@@ -404,11 +406,20 @@ main {
     font-weight: 700;
     font-size: 22px;
     line-height: 1.2;
+    min-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   &__meta {
     margin-top: 6px;
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__row {
@@ -654,7 +665,7 @@ main {
   }
 }
 
-@media (max-width: 896px) {
+@include respond(896px) {
   .header__search { width: 320px; }
   .header__link { font-size: 15px; padding: 6px 14px; }
   .header__btn { font-size: 15px; width: 85px; }
@@ -690,13 +701,13 @@ main {
   .stat__label { font-size: 14px; }
 }
 
-@media (max-width: 672px) {
+@include respond(672px) {
   .hero { min-height: 437px; padding-top: 84px; }
   .hero__title { font-size: 36px; max-width: 347px; }
   .hero__text { font-size: 14px; max-width: 347px; }
   .hero__frame { width: 157px; height: 202px; top: 106px; right: 129px; padding: 14px 11px 31px 10px; }
 
-  .tours__grid { grid-template-columns: repeat(2, 1fr); }
+  .tours__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about__inner { grid-template-columns: 1fr; }
 }
 
@@ -706,3 +717,4 @@ main {
 @import 'tour-details';
 @import 'booking';
 @import 'chat-widget';
+@import 'responsive';

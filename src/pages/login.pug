@@ -24,15 +24,17 @@ html(lang="uk")
           .auth-card__divider
             span або увійти за email
 
-          form.auth-card__form(action="/profile.html" method="post")
+          form.auth-card__form#loginForm(novalidate)
             .auth-card__field
               label.auth-card__label(for="email") Пошта або нік
-              input.auth-card__input#email(type="email" name="email" placeholder="example@gmail.com" required)
+              input.auth-card__input#email(type="email" name="email" placeholder="example@gmail.com" autocomplete="email" required)
 
             .auth-card__field
               label.auth-card__label(for="password") Пароль
               input.auth-card__input#password(type="password" name="password" placeholder="••••••••" required)
               a.auth-card__forgot(href="#") Забули пароль?
+
+            p.auth-card__error#loginError(hidden)
 
             button.auth-card__btn-submit(type="submit") Увійти
 

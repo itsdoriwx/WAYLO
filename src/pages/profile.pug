@@ -4,30 +4,10 @@ html(lang="uk")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Особистий кабінет | WAYLO
-    link(rel="preconnect" href="https://fonts.googleapis.com")
-    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet")
   body.profile-page
      
-    header.header
-      .container
-        .header__inner
-          a.header__logo(href="/index.html") WAYLO
-          
-          nav.header__nav
-            a.header__link(href="/index.html") Головна
-            a.header__link(href="/tours.html") Тури
-            a.header__link(href="#") Маркет
-            
-          .header__search
-            input.header__search-input(type="text" placeholder="Введіть запит...")
-            svg.header__search-icon(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D2038" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
-              circle(cx="11" cy="11" r="8")
-              line(x1="21" y1="21" x2="16.65" y2="16.65")
-            
-          a.header__profile-btn(href="/profile.html")
-            .header__profile-avatar
-            span.header__profile-name itsdariawx
+    include header.pug
 
     main.profile-main
       .profile-container
@@ -36,8 +16,20 @@ html(lang="uk")
           aside.profile-sidebar
             .profile-user
               .profile-user__avatar
-              h1.profile-user__name Дар’я Цілуйко
-              p.profile-user__meta @itsdariawx  |  itsdariawx@gmail.com
+              h1.profile-user__name#profileName
+              p.profile-user__meta#profileMeta
+              button.profile-user__edit#profileEditBtn(type="button") Редагувати профіль
+              form.profile-edit#profileEditForm(hidden novalidate)
+                .profile-edit__field
+                  label.profile-edit__label(for="editName") Ім'я
+                  input.profile-edit__input#editName(type="text" maxlength="40" placeholder="Дар'я Цілуйко" autocomplete="name")
+                .profile-edit__field
+                  label.profile-edit__label(for="editNick") Нікнейм
+                  input.profile-edit__input#editNick(type="text" maxlength="30" placeholder="itsdariawx" autocomplete="nickname")
+                p.profile-edit__error#profileEditError(hidden)
+                .profile-edit__actions
+                  button.profile-edit__save(type="submit") Зберегти
+                  button.profile-edit__cancel#profileEditCancel(type="button") Скасувати
 
             //- картка балансу бонусів
             .balance-card
@@ -49,7 +41,7 @@ html(lang="uk")
                       stop(offset="0%" stop-color="#DCE6EF")
                       stop(offset="100%" stop-color="#8AAFD5")
                   path(d="M32 0C32 17.6731 17.6731 32 0 32C17.6731 32 32 46.3269 32 64C32 46.3269 46.3269 32 64 32C46.3269 32 32 17.6731 32 0Z" fill="url(#starGrad)")
-                span.balance-card__value 448
+                span.balance-card__value 596
               p.balance-card__note * 1 бал = 1 грн
 
             //- історія нарахування балів
@@ -60,13 +52,13 @@ html(lang="uk")
                   span Реєстрація
                   strong.history-card__points +100
                 li.history-card__item
-                  span Відгук до подорожі “Таємниці Риму”
+                  span Відгук до подорожі "Таємниці Риму"
                   strong.history-card__points +50
                 li.history-card__item
-                  span Челендж “Автентична страва”
+                  span Челендж "Повтори фото-мем у Парижі"
                   strong.history-card__points +200
 
-            a.profile-logout-btn(href="/index.html") Вийти
+            a.profile-logout-btn#logoutBtn(href="/index.html") Вийти
 
           //- права частинка: квитки
           section.profile-tickets
@@ -107,7 +99,7 @@ html(lang="uk")
                       span.ticket-card__val WL-4IEG21
 
                 .ticket-card__qr-side
-                  .ticket-card__qr-box
+                  .ticket-card__qr-box(data-code="WL-4IEG21")
                   span.ticket-card__code WL-4IEG21
 
               //- квиток 2
@@ -142,5 +134,5 @@ html(lang="uk")
                       span.ticket-card__val WL-SX23E1
 
                 .ticket-card__qr-side
-                  .ticket-card__qr-box
+                  .ticket-card__qr-box(data-code="WL-SX23E1")
                   span.ticket-card__code WL-SX23E1

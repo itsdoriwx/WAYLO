@@ -24,26 +24,6 @@ section.hero
     { id: 'holiday', label: 'Святкові' }
   ]
 
-  const tours = [
-    { title: 'Париж: Ейфелева вежа + Лувр', place: 'Франція', days: '6 днів', price: 'від 32 500 грн', cat: 'excursion' },
-    { title: 'США: Нью-Йорк + Лос-Анджелес', place: 'США, переліт включено', days: '16 днів', price: 'від 118 000 грн', cat: 'excursion' },
-    { title: 'Буковель: зимовий відпочинок', place: 'Прикарпаття', days: '5 днів', price: 'від 9 400 грн', cat: 'mountains' },
-    { title: 'Львів: новорічні казки', place: 'Львівщина', days: '4 дні', price: 'від 7 200 грн', cat: 'holiday' },
-    { title: 'Будапешт: різдвяні ярмарки', place: 'Угорщина', days: '5 днів', price: 'від 14 800 грн', cat: 'holiday' },
-    { title: 'Греція: Крит + Санторіні', place: 'Греція, переліт включено', days: '10 днів', price: 'від 41 900 грн', cat: 'sea' },
-    { title: 'Італія: Мілан + Венеція', place: 'Італія, переліт включено', days: '8 днів', price: 'від 36 700 грн', cat: 'excursion' }
-  ]
-
-mixin tourCard(t, i)
-  article.tour-card(data-category=t.cat)
-    .tour-card__img(class=`tour-card__img--${i % 3}` style=`--img: url(/images/tour-${i + 1}.jpg)`)
-    .tour-card__body
-      h3.tour-card__title= t.title
-      p.tour-card__meta #{t.place} | #{t.days}
-      .tour-card__row
-        span.tour-card__price= t.price
-        a.tour-card__btn(href="#") Деталі
-
 section.tours
   .container
     h2.section-title Обери свою особливу подорож
@@ -51,9 +31,8 @@ section.tours
       each c, i in categories
         button.chip(type="button" data-filter=c.id class=i === 0 ? 'chip--active' : '')= c.label
 
-    .tours__grid
-      each t, i in tours
-        +tourCard(t, i)
+    //- картки (тури з featured у tours.json) створює скрипт home.ts
+    .tours__grid#homeGrid
       a.tours__all(href="/tours.html")
         span.tours__all-title Дивитись усі тури
         span.tours__all-sub 50 + напрямків
@@ -110,3 +89,8 @@ section.journey
         text.journey__label(x="690" y="220" text-anchor="middle") Оформити подорож
         text.journey__label(x="1225" y="132" text-anchor="middle") Підготуйся до
         text.journey__label(x="1225" y="160" text-anchor="middle") незабутніх емоцій
+     
+      ol.journey__steps
+        li Знайти свій тур
+        li Оформити подорож
+        li Підготуйся до незабутніх емоцій

@@ -3,151 +3,70 @@ html(lang="uk")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title WAYLO | Карпати: Тиса та Синевир
+    title WAYLO | Деталі туру
   body
     - const activePage = 'tours'
     include header.pug
 
-    main.tour-details-page
+    main.tour-details-page#tourPage
       .details-container
-        //- кнопка повернення
         a.details-back-link(href="/tours.html")
           svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
             line(x1="19" y1="12" x2="5" y2="12")
             polyline(points="12 19 5 12 12 5")
           span Назад до всіх турів
 
-        //- галерея
         .details-gallery
-          .details-gallery__main.details-gallery__item--0
-            button.details-gallery__arrow.details-gallery__arrow--prev(type="button" aria-label="Попереднє фото") ‹
-            button.details-gallery__arrow.details-gallery__arrow--next(type="button" aria-label="Наступне фото") ›
-            span.details-gallery__label сюди фото
-            .details-gallery__dots
-              span.details-gallery__dot.details-gallery__dot--active
-              span.details-gallery__dot
-              span.details-gallery__dot
+          .details-gallery__main#galleryMain
+            button.details-gallery__arrow.details-gallery__arrow--prev#galleryPrev(type="button" aria-label="Попереднє фото") ‹
+            button.details-gallery__arrow.details-gallery__arrow--next#galleryNext(type="button" aria-label="Наступне фото") ›
+            .details-gallery__dots#galleryDots
 
           .details-gallery__side
-            .details-gallery__item.details-gallery__item--square
-              span.details-gallery__label сюди фото
+            .details-gallery__item.details-gallery__item--square#gallerySide
 
-        //- основний контент
         .details-grid
           .details-info
-            h1.details-info__title Карпати: Тиса та Синевир
+            h1.details-info__title#detTitle
 
-            //- мета-рядок
             .details-info__meta-row
-              .details-info__meta
-                span Закарпаття
-                span.details-info__divider |
-                span 5 днів
-                span.details-info__divider |
-                span група до 20 осіб
+              .details-info__meta#detMeta
 
               .details-info__rating
                 span.details-info__star ★
-                span.details-info__score 4.9
-                a.details-info__reviews(href="#reviews") (312 відгуків)
+                span.details-info__score#detScore
+                a.details-info__reviews#detReviews(href="#reviews")
 
-            p.details-info__description
-              | Гірські стежки, бурхлива Тиса, озеро Синевир і вечори в карпатській колибі. Дорога, проживання, гід і страхування вже організовані.
+            p.details-info__description#detDescription
 
             .details-program
               h2.details-program__title Програма по днях
-              
-              .details-program__tabs
-                button.details-program__tab.details-program__tab--active(type="button" data-day="1") День 1
-                button.details-program__tab(type="button" data-day="2") День 2
-                button.details-program__tab(type="button" data-day="3") День 3
-                button.details-program__tab(type="button" data-day="4") День 4
-                button.details-program__tab(type="button" data-day="5") День 5
-
-              .details-program__card
-                .details-program__day-content(data-day-content="1")
-                  h3.details-program__day-title День 1 — Виїзд і Колочава
-                  ul.details-program__list
-                    li Збір у Києві, нічний перегін. Ранкова кава в Карпатах, заселення в колибу.
-                    li Вечеря та знайомство з групою.
-                    li Проживання: колиба, 2–3-місні номери.
-
-                .details-program__day-content(data-day-content="2" hidden)
-                  h3.details-program__day-title День 2 — Озеро Синевир та Центр ведмедів
-                  ul.details-program__list
-                    li Сніданок та піша прогулянка до озера Синевир.
-                    li Відвідування Реабілітаційного центру бурих ведмедів.
-                    li Майстер-клас із приготування карпатського баноша.
-
-                .details-program__day-content(data-day-content="3" hidden)
-                  h3.details-program__day-title День 3 — Рафтинг по Тисі
-                  ul.details-program__list
-                    li Інструктаж та сплав по бурхливій Тисі на рафтах.
-                    li Обід-пікнік на березі річки.
-                    li Вечірній відпочинок у карпатських чанах.
-
-                .details-program__day-content(data-day-content="4" hidden)
-                  h3.details-program__day-title День 4 — Полонина Боржава та водоспад Шипіт
-                  ul.details-program__list
-                    li Підйом на витягу на полонину Боржава.
-                    li Екскурсія до водоспаду Шипіт.
-                    li Вільний час для купівлі сувенірів та місцевого сиру.
-
-                .details-program__day-content(data-day-content="5" hidden)
-                  h3.details-program__day-title День 5 — Замок Паланок та повернення
-                  ul.details-program__list
-                    li Оглядова екскурсія замком Паланок у Мукачеві.
-                    li Купівля карпатських гостинців.
-                    li Виїзд додому, прибуття до Києва пізно ввечері.
+              .details-program__tabs#programTabs
+              .details-program__card#programCard
 
             .details-combined-card
               .details-combined-card__col
                 .details-combined-card__header
-                  h3.details-combined-card__title Включено в ціну
-                .details-combined-card__tags
-                  span.details-tag Автобус
-                  span.details-tag Проживання 4 ночі
-                  span.details-tag Сніданки
-                  span.details-tag Страхування
-                  span.details-tag Гід-координатор
+                  h3.details-combined-card__title Включено у вартість
+                .details-combined-card__tags#includedTags
 
               .details-combined-card__divider
 
               .details-combined-card__col
                 .details-combined-card__header
                   h3.details-combined-card__title За бажанням
-                  .details-info-tooltip
-                    span.details-info-tooltip__icon(title="Оплата відбувається готівкою гіду на місці") i
-                button.details-modal-btn(type="button" onclick="document.getElementById('activitiesModal').style.display='flex'")
-                  | Дивитись усі активності
+                button.details-modal-btn#openActivities(type="button") Дивитись усі активності
 
-          //- картка вартості та бронювання
           aside.details-booking-card
             .details-booking-card__price-block
               .details-booking-card__price-row
-                span#cardPrice.details-booking-card__price 8 010 грн
-                span#cardOldPrice.details-booking-card__old-price 8 900 грн
+                span#cardPrice.details-booking-card__price
+                span#cardOldPrice.details-booking-card__old-price
               span.details-booking-card__per за особу
 
             .details-booking-card__group
               label.details-booking-card__label Дата виїзду
-              
-              .details-date-options
-                label.details-date-option.details-date-option--selected(data-price="8010" data-discount="true")
-                  input(type="radio" name="tour_date" checked)
-                  span.details-date-option__text 14 листопада
-                  span.details-date-option__badge -10%
-                  span.details-date-option__seats місць: 12
-
-                label.details-date-option(data-price="8900" data-discount="false")
-                  input(type="radio" name="tour_date")
-                  span.details-date-option__text 5 грудня
-                  span.details-date-option__seats місць: 3
-
-                label.details-date-option.details-date-option--disabled(data-price="8900" data-discount="false")
-                  input(type="radio" name="tour_date" disabled)
-                  span.details-date-option__text 20 грудня
-                  span.details-date-option__seats Місць немає
+              .details-date-options#dateOptions
 
             button.details-question-btn(type="button")
               span Є питання?
@@ -156,32 +75,15 @@ html(lang="uk")
       .details-sticky-bar__container
         .details-sticky-bar__info
           .details-sticky-bar__price-group
-            span#stickyPrice.details-sticky-bar__price 8 010 грн
+            span#stickyPrice.details-sticky-bar__price
             span.details-sticky-bar__sub за особу
         .details-sticky-bar__actions
-            a.details-btn.details-btn--outline(href="/booking.html") Забронювати
-            a.details-btn.details-btn--primary(href="/booking.html") Оплатити
+          a.details-btn.details-btn--outline#btnReserve(href="/booking.html") Забронювати
+          a.details-btn.details-btn--primary#btnPay(href="/booking.html") Оплатити
 
-    //- модальне вікно
     #activitiesModal.details-modal(style="display: none;")
-      .details-modal__overlay(onclick="document.getElementById('activitiesModal').style.display='none'")
+      .details-modal__overlay#modalOverlay
       .details-modal__content
-        button.details-modal__close(type="button" onclick="document.getElementById('activitiesModal').style.display='none'") ×
+        button.details-modal__close#modalClose(type="button" aria-label="Закрити") ×
         h3.details-modal__title Додаткові активності
-        
-        ul.details-modal__list
-          li
-            span Рафтинг на Тисі
-            strong + 800 грн
-          li
-            span Купання у чанах
-            strong + 600 грн
-          li
-            span Кінна прогулянка
-            strong + 750 грн
-          li
-            span Дегустація місцевих сирів
-            strong + 450 грн
-          li
-            span Виїзд до джерела з мінералкою
-            strong + 300 грн
+        ul.details-modal__list#activitiesList
